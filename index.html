@@ -259,14 +259,12 @@
 
     .board-canvas:active { cursor: grabbing; }
 
-    /* --- ORGANIC SVG CLOUD BUBBLES --- */
+    /* --- ORGANIC SVG CLOUD CARD DESIGN --- */
     .cloud-wrapper {
       position: absolute;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 38px 45px;
       transition: transform 0.3s ease, filter 0.3s ease;
       animation: floatCloud 7s ease-in-out infinite alternate;
     }
@@ -276,39 +274,38 @@
       z-index: 60;
     }
 
-    /* Visual Background Shapes */
-    .cloud-bg {
+    /* SVG Background Container */
+    .cloud-svg-bg {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
       z-index: 1;
+      overflow: visible;
     }
 
     .cloud-content {
       position: relative;
       z-index: 2;
-      width: 100%;
+      padding: 45px 50px;
       text-align: center;
+      width: 100%;
     }
 
-    /* ~J Clouds (Her Side - Rich Rose Pink) */
-    .cloud-j .cloud-bg {
-      background: linear-gradient(135deg, rgba(85, 20, 95, 0.85), rgba(45, 10, 60, 0.88));
-      box-shadow: 0 0 35px rgba(244, 114, 182, 0.4), inset 0 0 20px rgba(244, 114, 182, 0.3);
-      border: 1px solid rgba(244, 114, 182, 0.55);
+    /* ~J Clouds (Rose Pink Styling) */
+    .cloud-j .cloud-svg-bg path {
+      fill: rgba(55, 12, 65, 0.88);
+      stroke: rgba(244, 114, 182, 0.7);
+      stroke-width: 2.5;
+      filter: drop-shadow(0px 0px 20px rgba(244, 114, 182, 0.45));
     }
 
-    /* ~M Clouds (Your Side - Deep Lavender Purple) */
-    .cloud-m .cloud-bg {
-      background: linear-gradient(135deg, rgba(35, 18, 80, 0.85), rgba(18, 10, 50, 0.88));
-      box-shadow: 0 0 35px rgba(168, 85, 247, 0.4), inset 0 0 20px rgba(192, 132, 252, 0.3);
-      border: 1px solid rgba(192, 132, 252, 0.55);
+    /* ~M Clouds (Lavender Purple Styling) */
+    .cloud-m .cloud-svg-bg path {
+      fill: rgba(25, 10, 55, 0.88);
+      stroke: rgba(192, 132, 252, 0.7);
+      stroke-width: 2.5;
+      filter: drop-shadow(0px 0px 20px rgba(168, 85, 247, 0.45));
     }
-
-    /* Randomized Organic Cloud Border Shapes using CSS clip-path */
-    .shape-1 { clip-path: path('M 30,60 Q 10,30 40,20 Q 70,0 120,10 Q 170,-10 230,10 Q 280,0 310,30 Q 340,60 330,110 Q 350,160 320,200 Q 290,230 240,220 Q 180,240 120,225 Q 60,240 30,200 Q 0,160 10,110 Q 0,80 30,60 Z'); }
-    .shape-2 { clip-path: path('M 40,50 Q 15,15 60,10 Q 110,-15 170,5 Q 220,-10 270,15 Q 320,10 335,50 Q 360,100 330,140 Q 350,190 300,215 Q 240,235 170,220 Q 100,235 45,210 Q 5,185 20,135 Q -5,95 40,50 Z'); }
-    .shape-3 { clip-path: path('M 25,65 Q 0,35 45,15 Q 90,-5 150,10 Q 210,-15 265,15 Q 310,5 330,55 Q 355,105 325,155 Q 345,205 295,225 Q 225,245 150,230 Q 75,245 35,215 Q 0,180 15,125 Q -5,85 25,65 Z'); }
 
     .cloud-header {
       font-family: 'Cinzel', serif;
@@ -333,7 +330,7 @@
     .cloud-song {
       font-style: italic;
       font-size: 0.76rem;
-      color: rgba(255, 255, 255, 0.6);
+      color: rgba(255, 255, 255, 0.65);
       letter-spacing: 0.8px;
     }
 
@@ -342,7 +339,7 @@
       100% { transform: translateY(-14px) rotate(1.2deg); }
     }
 
-    /* --- NEXT BUTTON (Bottom Right) --- */
+    /* --- NEXT BUTTON --- */
     .next-nav-btn {
       position: absolute;
       bottom: 25px;
@@ -373,7 +370,7 @@
     }
 
     @media (max-width: 600px) {
-      .cloud-wrapper { padding: 30px 35px; }
+      .cloud-content { padding: 35px 40px; }
       .initials { font-size: 3.2rem; }
       .sigil-ring { width: 190px; height: 190px; }
       .canvas-title { font-size: 1.1rem; }
@@ -425,8 +422,10 @@
       <div class="board-canvas" id="boardCanvas">
         
         <!-- Cloud 1: ~M (Duniyaa) -->
-        <div class="cloud-wrapper cloud-m" style="top: 1350px; left: 1100px; width: 340px; animation-delay: 0s;">
-          <div class="cloud-bg shape-1"></div>
+        <div class="cloud-wrapper cloud-m" style="top: 1350px; left: 1050px; width: 380px; animation-delay: 0s;">
+          <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
+            <path d="M 60 160 C 20 160 10 120 40 90 C 20 50 70 20 120 40 C 160 10 240 10 280 40 C 330 10 380 50 360 100 C 390 130 380 180 340 180 C 320 220 250 230 200 200 C 150 230 80 220 60 160 Z" />
+          </svg>
           <div class="cloud-content">
             <div class="cloud-header">~M</div>
             <div class="cloud-text">bulaave tujhe yaar ajj meri galiyaa, basaau tere sang main alag duniya, na aae kabhi dono mein zara bhi faasle, bas ek tu ho ek mai hoon aur koi na</div>
@@ -435,8 +434,10 @@
         </div>
 
         <!-- Cloud 2: ~J (Duniyaa) -->
-        <div class="cloud-wrapper cloud-j" style="top: 1350px; left: 1650px; width: 350px; animation-delay: -2s;">
-          <div class="cloud-bg shape-2"></div>
+        <div class="cloud-wrapper cloud-j" style="top: 1350px; left: 1600px; width: 390px; animation-delay: -2s;">
+          <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
+            <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" />
+          </svg>
           <div class="cloud-content">
             <div class="cloud-header">~J</div>
             <div class="cloud-text">Tujhse mili to seekha maine hansna, aaya mujhe safar mein thheherna, main to bhool gayi duniya ka pata yaar jab se tujhe hai jaana</div>
@@ -445,8 +446,10 @@
         </div>
 
         <!-- Cloud 3: ~J (Maula Mere Maula) -->
-        <div class="cloud-wrapper cloud-j" style="top: 1800px; left: 950px; width: 330px; animation-delay: -1s;">
-          <div class="cloud-bg shape-3"></div>
+        <div class="cloud-wrapper cloud-j" style="top: 1820px; left: 900px; width: 360px; animation-delay: -1s;">
+          <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
+            <path d="M 60 160 C 20 160 10 120 40 90 C 20 50 70 20 120 40 C 160 10 240 10 280 40 C 330 10 380 50 360 100 C 390 130 380 180 340 180 C 320 220 250 230 200 200 C 150 230 80 220 60 160 Z" />
+          </svg>
           <div class="cloud-content">
             <div class="cloud-header">~J</div>
             <div class="cloud-text">Baatein teri itni haseen
@@ -457,8 +460,10 @@ Phulo si aae khushbu</div>
         </div>
 
         <!-- Cloud 4: ~M (Maula Mere Maula) -->
-        <div class="cloud-wrapper cloud-m" style="top: 1800px; left: 1550px; width: 340px; animation-delay: -3.5s;">
-          <div class="cloud-bg shape-1"></div>
+        <div class="cloud-wrapper cloud-m" style="top: 1820px; left: 1520px; width: 370px; animation-delay: -3.5s;">
+          <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
+            <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" />
+          </svg>
           <div class="cloud-content">
             <div class="cloud-header">~M</div>
             <div class="cloud-text">rakh lu chhupa ke, main kahi tujhko
@@ -470,8 +475,10 @@ saath tere, main hi rahu</div>
         </div>
 
         <!-- Cloud 5: ~J (She's My Religion) -->
-        <div class="cloud-wrapper cloud-j" style="top: 900px; left: 1380px; width: 370px; animation-delay: -4s;">
-          <div class="cloud-bg shape-2"></div>
+        <div class="cloud-wrapper cloud-j" style="top: 850px; left: 1320px; width: 420px; animation-delay: -4s;">
+          <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
+            <path d="M 60 160 C 20 160 10 120 40 90 C 20 50 70 20 120 40 C 160 10 240 10 280 40 C 330 10 380 50 360 100 C 390 130 380 180 340 180 C 320 220 250 230 200 200 C 150 230 80 220 60 160 Z" />
+          </svg>
           <div class="cloud-content">
             <div class="cloud-header">~J</div>
             <div class="cloud-text">She's gold*, she's dark, she's cynical
@@ -485,8 +492,10 @@ She's an* angel, and* she is my religion</div>
         </div>
 
         <!-- Cloud 6: ~M (Stay Gold) -->
-        <div class="cloud-wrapper cloud-m" style="top: 2250px; left: 1350px; width: 340px; animation-delay: -1.5s;">
-          <div class="cloud-bg shape-3"></div>
+        <div class="cloud-wrapper cloud-m" style="top: 2300px; left: 1320px; width: 380px; animation-delay: -1.5s;">
+          <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
+            <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" />
+          </svg>
           <div class="cloud-content">
             <div class="cloud-header">~M</div>
             <div class="cloud-text">Wish I could keep you in amber
@@ -500,8 +509,10 @@ Hope that you'll always stay gold</div>
         </div>
 
         <!-- Cloud 7: ~J (Aakhon Se Batana) -->
-        <div class="cloud-wrapper cloud-j" style="top: 1580px; left: 600px; width: 350px; animation-delay: -2.8s;">
-          <div class="cloud-bg shape-1"></div>
+        <div class="cloud-wrapper cloud-j" style="top: 1580px; left: 500px; width: 370px; animation-delay: -2.8s;">
+          <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
+            <path d="M 60 160 C 20 160 10 120 40 90 C 20 50 70 20 120 40 C 160 10 240 10 280 40 C 330 10 380 50 360 100 C 390 130 380 180 340 180 C 320 220 250 230 200 200 C 150 230 80 220 60 160 Z" />
+          </svg>
           <div class="cloud-content">
             <div class="cloud-header">~J</div>
             <div class="cloud-text">Ham khaamoshi padh lеnge agar chup tum raho
@@ -511,8 +522,10 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
         </div>
 
         <!-- Cloud 8: ~M (Aakhon Se Batana) -->
-        <div class="cloud-wrapper cloud-m" style="top: 1580px; left: 2100px; width: 350px; animation-delay: -0.5s;">
-          <div class="cloud-bg shape-2"></div>
+        <div class="cloud-wrapper cloud-m" style="top: 1580px; left: 2150px; width: 370px; animation-delay: -0.5s;">
+          <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
+            <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" />
+          </svg>
           <div class="cloud-content">
             <div class="cloud-header">~M</div>
             <div class="cloud-text">"tum haath thaam lena, hum savar jaayenge"</div>
@@ -585,7 +598,7 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
     }
 
     function goToNextPage() {
-      alert("Next Page trigger clicked! Ready to connect to your next section.");
+      alert("Next Page trigger clicked! Ready for the next page.");
     }
 
     /* --- Interactive Canvas Logic (Pan & Zoom) --- */
