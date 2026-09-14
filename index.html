@@ -4,47 +4,235 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>J & M — Our Sacred Realm</title>
-  <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet" />
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #050212;
+      color: #ffffff;
+    }
+
+    /* --- Galaxy Background --- */
+    .nebula {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.4), rgba(30, 0, 80, 0.8), rgba(5, 2, 18, 1));
+      z-index: 1;
+    }
+
+    .stars {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: #050212 radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+                  radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+                  radial-gradient(1px 1px at 90px 40px, #ddd, rgba(0,0,0,0)),
+                  radial-gradient(2px 2px at 160px 120px, #fff, rgba(0,0,0,0));
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      z-index: 0;
+    }
+
+    /* --- Gate Layout --- */
+    .gate-container {
+      position: relative;
+      z-index: 10;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .portal-arch {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .gate-door {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(135deg, #090314, #1f083d, #090314);
+      border: 1px solid rgba(192, 132, 252, 0.3);
+      transition: transform 2.5s cubic-bezier(0.77, 0, 0.175, 1);
+      z-index: 12;
+    }
+
+    .gate-left {
+      left: 0;
+      border-right: 2px solid rgba(216, 180, 254, 0.5);
+    }
+
+    .gate-right {
+      right: 0;
+      border-left: 2px solid rgba(216, 180, 254, 0.5);
+    }
+
+    /* Animations for Doors */
+    .gate-door.open-left {
+      transform: translateX(-100%);
+    }
+
+    .gate-door.open-right {
+      transform: translateX(100%);
+    }
+
+    /* --- Center Seal & Button --- */
+    .center-seal {
+      position: absolute;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .sigil-ring {
+      width: 220px;
+      height: 220px;
+      border: 2px dashed rgba(216, 180, 254, 0.6);
+      border-radius: 50%;
+      position: absolute;
+      top: -20px;
+      animation: rotateSigil 25s linear infinite;
+      box-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
+    }
+
+    @keyframes rotateSigil {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .initials {
+      font-family: 'Cinzel', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: 6px;
+      color: #f3e8ff;
+      text-shadow: 0 0 15px rgba(192, 132, 252, 0.8), 0 0 30px rgba(168, 85, 247, 0.8);
+      margin-top: 25px;
+    }
+
+    .subtitle {
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      letter-spacing: 4px;
+      color: #d8b4fe;
+      text-transform: uppercase;
+      margin-top: 5px;
+      margin-bottom: 30px;
+    }
+
+    .enter-btn {
+      font-family: 'Cinzel', serif;
+      background: rgba(15, 7, 32, 0.85);
+      color: #f3e8ff;
+      border: 1px solid #c084fc;
+      padding: 14px 36px;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(192, 132, 252, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .enter-btn:hover {
+      background: #c084fc;
+      color: #0d041a;
+      box-shadow: 0 0 35px rgba(192, 132, 252, 1);
+      transform: scale(1.05);
+    }
+
+    /* --- Genshin Impact Style White Flash --- */
+    .genshin-flash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: #ffffff;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 100;
+      transition: opacity 1.2s ease-in-out;
+    }
+
+    .genshin-flash.active {
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Animated Galaxy Background -->
+  <!-- Galaxy Background -->
   <div class="stars"></div>
-  <div class="twinkling"></div>
   <div class="nebula"></div>
 
-  <!-- Main Opening Gate Container -->
-  <main class="gate-container" id="gateContainer">
-    
-    <!-- Outer Fantasy Portal / Arch Frame -->
+  <!-- Opening Gate Container -->
+  <main class="gate-container">
     <div class="portal-arch">
       
-      <!-- Left Gate Door -->
-      <div class="gate-door gate-left" id="gateLeft">
-        <div class="gate-pattern"></div>
-      </div>
-      
-      <!-- Right Gate Door -->
-      <div class="gate-door gate-right" id="gateRight">
-        <div class="gate-pattern"></div>
-      </div>
+      <!-- Left & Right Gates -->
+      <div class="gate-door gate-left" id="gateLeft"></div>
+      <div class="gate-door gate-right" id="gateRight"></div>
 
-      <!-- Center Seal & Sigil -->
+      <!-- Center Seal -->
       <div class="center-seal" id="centerSeal">
         <div class="sigil-ring"></div>
         <div class="initials">J & M</div>
         <p class="subtitle">Enter Our Realm</p>
-        <button class="enter-btn" id="enterBtn" onclick="openGates()">Touch to Enter</button>
+        <button class="enter-btn" onclick="openGates()">Touch to Enter</button>
       </div>
 
     </div>
-
   </main>
 
-  <!-- Genshin-Style Light Flash Transition Overlay -->
+  <!-- Genshin-Style Flash -->
   <div class="genshin-flash" id="genshinFlash"></div>
 
-  <script src="script.js"></script>
+  <script>
+    function openGates() {
+      const gateLeft = document.getElementById('gateLeft');
+      const gateRight = document.getElementById('gateRight');
+      const centerSeal = document.getElementById('centerSeal');
+      const genshinFlash = document.getElementById('genshinFlash');
+
+      // Fade out center seal
+      centerSeal.style.opacity = '0';
+      centerSeal.style.transform = 'scale(0.8)';
+      centerSeal.style.pointerEvents = 'none';
+
+      // Slide doors open
+      setTimeout(() => {
+        gateLeft.classList.add('open-left');
+        gateRight.classList.add('open-right');
+      }, 400);
+
+      // Genshin White Light Flash
+      setTimeout(() => {
+        genshinFlash.classList.add('active');
+      }, 1800);
+
+      // Ready for next section
+      setTimeout(() => {
+        alert("Welcome to your world, J & M!");
+      }, 3200);
+    }
+  </script>
 </body>
 </html>
