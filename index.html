@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>J & M — Our Sacred Realm</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Animated Galaxy Background -->
+  <div class="stars"></div>
+  <div class="twinkling"></div>
+  <div class="nebula"></div>
+
+  <!-- Main Opening Gate Container -->
+  <main class="gate-container" id="gateContainer">
+    
+    <!-- Outer Fantasy Portal / Arch Frame -->
+    <div class="portal-arch">
+      
+      <!-- Left Gate Door -->
+      <div class="gate-door gate-left" id="gateLeft">
+        <div class="gate-pattern"></div>
+      </div>
+      
+      <!-- Right Gate Door -->
+      <div class="gate-door gate-right" id="gateRight">
+        <div class="gate-pattern"></div>
+      </div>
+
+      <!-- Center Seal & Sigil -->
+      <div class="center-seal" id="centerSeal">
+        <div class="sigil-ring"></div>
+        <div class="initials">J & M</div>
+        <p class="subtitle">Enter Our Realm</p>
+        <button class="enter-btn" id="enterBtn" onclick="openGates()">Touch to Enter</button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Genshin-Style Light Flash Transition Overlay -->
+  <div class="genshin-flash" id="genshinFlash"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
