@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>J & M — Our Sacred Realm</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
   
   <style>
     * {
@@ -16,9 +16,9 @@
     body, html {
       width: 100%;
       height: 100%;
-      overflow: hidden;
+      overflow-x: hidden;
       font-family: 'Montserrat', sans-serif;
-      background-color: #050212;
+      background-color: #ffffff;
       color: #ffffff;
     }
 
@@ -33,7 +33,7 @@
       overflow: hidden;
     }
 
-    /* --- Splitting Gate Doors (Google Drive Image) --- */
+    /* --- Splitting Gate Doors --- */
     .gate-door {
       position: absolute;
       top: 0;
@@ -56,18 +56,18 @@
       background-position: right center;
     }
 
-    /* Gate Opening: Pure Brightness to White Transition */
+    /* Bright Opening Transition (No Dark Phase) */
     .gate-door.open-left {
-      transform: translateX(-100%) scale(1.1);
-      filter: brightness(2.5) contrast(1.2);
+      transform: translateX(-100%) scale(1.05);
+      filter: brightness(2) contrast(1.1);
     }
 
     .gate-door.open-right {
-      transform: translateX(100%) scale(1.1);
-      filter: brightness(2.5) contrast(1.2);
+      transform: translateX(100%) scale(1.05);
+      filter: brightness(2) contrast(1.1);
     }
 
-    /* --- Center J & M Emblem / Seal --- */
+    /* --- Center J & M Seal --- */
     .center-seal {
       position: relative;
       z-index: 20;
@@ -76,13 +76,13 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
     .sigil-ring {
       width: 260px;
       height: 260px;
-      border: 2px dashed rgba(216, 180, 254, 0.7);
+      border: 2px dashed rgba(216, 180, 254, 0.8);
       border-radius: 50%;
       position: absolute;
       animation: rotateSigil 25s linear infinite;
@@ -100,7 +100,7 @@
       font-weight: 700;
       letter-spacing: 8px;
       color: #f3e8ff;
-      text-shadow: 0 0 20px rgba(192, 132, 252, 0.9), 0 0 40px rgba(168, 85, 247, 0.8), 0 0 60px rgba(147, 51, 234, 0.6);
+      text-shadow: 0 0 20px rgba(192, 132, 252, 0.9), 0 0 40px rgba(168, 85, 247, 0.8);
       margin-top: 10px;
     }
 
@@ -137,7 +137,7 @@
       transform: scale(1.06);
     }
 
-    /* --- Full White Flash Transition --- */
+    /* --- Genshin Pure White Flash --- */
     .genshin-flash {
       position: fixed;
       top: 0; left: 0;
@@ -153,72 +153,120 @@
       opacity: 1;
     }
 
-    /* --- Inner World: First Vision Canvas --- */
+    /* --- Inner World Page (Drive Background Image) --- */
     .inner-world {
       position: absolute;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background: radial-gradient(circle at 50% 50%, #22083d, #0d031a, #04010a);
+      background-image: url('https://lh3.googleusercontent.com/d/1vDVAKRCK6sIUcZqofTpXzGP4TU38Pfsk');
+      background-size: cover;
+      background-position: center;
       z-index: 1;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 0 8vw;
+      padding: 20px;
       opacity: 0;
       transition: opacity 2s ease;
+      overflow-y: auto;
     }
 
     .inner-world.visible {
       opacity: 1;
     }
 
-    /* Floating Translucent Sparkly Chat Bubbles */
-    .chat-bubble {
-      max-width: 420px;
-      padding: 28px 32px;
-      background: rgba(147, 51, 234, 0.15);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(216, 180, 254, 0.4);
-      border-radius: 24px;
-      color: #f3e8ff;
-      font-size: 1.1rem;
-      line-height: 1.7;
-      letter-spacing: 0.5px;
-      box-shadow: 0 0 30px rgba(168, 85, 247, 0.25), inset 0 0 15px rgba(192, 132, 252, 0.15);
-      position: relative;
+    /* --- Chat Container --- */
+    .chat-container {
+      width: 100%;
+      max-width: 850px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      padding: 20px 10px;
     }
 
+    /* Translucent Sparkly Chat Bubbles */
+    .chat-bubble {
+      position: relative;
+      max-width: 80%;
+      padding: 20px 24px;
+      background: rgba(30, 10, 50, 0.55);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(216, 180, 254, 0.4);
+      color: #fceeff;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      letter-spacing: 0.3px;
+      box-shadow: 0 8px 32px rgba(138, 43, 226, 0.3), inset 0 0 15px rgba(192, 132, 252, 0.2);
+    }
+
+    /* Left Message (Partner) */
     .chat-left {
       align-self: flex-start;
-      margin-top: 18vh;
-      animation: floatLeft 6s ease-in-out infinite alternate;
+      border-radius: 20px 20px 20px 4px;
+      animation: floatSlow 6s ease-in-out infinite alternate;
     }
 
+    /* Right Message (You) */
     .chat-right {
       align-self: flex-end;
-      margin-bottom: 18vh;
-      animation: floatRight 7s ease-in-out infinite alternate;
+      border-radius: 20px 20px 4px 20px;
+      background: rgba(70, 20, 100, 0.55);
+      animation: floatSlow 7s ease-in-out infinite alternate-reverse;
     }
 
-    /* Sparkle shimmer overlay on bubbles */
-    .chat-bubble::before {
+    /* WhatsApp-Style Pointer Tails */
+    .chat-left::after {
       content: '';
       position: absolute;
-      top: -2px; left: -2px; right: -2px; bottom: -2px;
-      border-radius: 26px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.4), transparent 40%, rgba(192,132,252,0.4));
-      z-index: -1;
-      opacity: 0.6;
+      bottom: 0;
+      left: -10px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 12px 14px 0;
+      border-color: transparent rgba(30, 10, 50, 0.55) transparent transparent;
     }
 
-    @keyframes floatLeft {
-      0% { transform: translateY(0px) rotate(-1deg); }
-      100% { transform: translateY(-18px) rotate(1deg); }
+    .chat-right::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: -10px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 0 14px 12px;
+      border-color: transparent transparent rgba(70, 20, 100, 0.55) transparent;
     }
 
-    @keyframes floatRight {
-      0% { transform: translateY(0px) rotate(1deg); }
-      100% { transform: translateY(-22px) rotate(-1deg); }
+    @keyframes floatSlow {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-10px); }
+    }
+
+    /* --- Mobile Responsive Rules --- */
+    @media (max-width: 600px) {
+      .chat-bubble {
+        max-width: 90%;
+        font-size: 0.95rem;
+        padding: 16px 18px;
+      }
+      
+      .chat-container {
+        gap: 24px;
+      }
+
+      .initials {
+        font-size: 3rem;
+      }
+
+      .sigil-ring {
+        width: 200px;
+        height: 200px;
+      }
     }
   </style>
 </head>
@@ -238,19 +286,26 @@
       <button class="enter-btn" onclick="openGates()">ENTER</button>
     </div>
 
-    <!-- Inner World: First Vision (Revealed after transition) -->
+    <!-- Inner World: Chat Vision -->
     <div class="inner-world" id="innerWorld">
-      <div class="chat-bubble chat-left">
-        "you say i am your god but you are my religion, my one true love and life, my existence is all for you"
-      </div>
-      <div class="chat-bubble chat-right">
-        "love like mine doesnt exist. i have loved you intensely, passionately, vehemently and hungrily, always finding another way to love you because worshipping you has never been enough"
+      <div class="chat-container">
+        
+        <!-- Her Message (Left) -->
+        <div class="chat-bubble chat-left">
+          "you say i am your god but you are my religion, my one true love and life, my existence is all for you"
+        </div>
+
+        <!-- Your Message (Right) -->
+        <div class="chat-bubble chat-right">
+          "love like mine doesnt exist. i have loved you intensely, passionately, vehemently and hungrily, always finding another way to love you because worshipping you has never been enough"
+        </div>
+
       </div>
     </div>
 
   </div>
 
-  <!-- Pure White Flash -->
+  <!-- Pure White Flash Overlay -->
   <div class="genshin-flash" id="genshinFlash"></div>
 
   <script>
@@ -261,29 +316,29 @@
       const genshinFlash = document.getElementById('genshinFlash');
       const innerWorld = document.getElementById('innerWorld');
 
-      // 1. Fade out seal
+      // 1. Hide seal
       centerSeal.style.opacity = '0';
-      centerSeal.style.transform = 'scale(0.7)';
+      centerSeal.style.transform = 'scale(0.8)';
       centerSeal.style.pointerEvents = 'none';
 
-      // 2. Open gates with immediate light bloom
+      // 2. Open gates with bright glow (no dimming)
       setTimeout(() => {
         gateLeft.classList.add('open-left');
         gateRight.classList.add('open-right');
       }, 200);
 
-      // 3. Complete whiteout flash
+      // 3. Full celestial whiteout
       setTimeout(() => {
         genshinFlash.classList.add('active');
-      }, 1400);
+      }, 1300);
 
-      // 4. Reveal inner world vision seamlessly behind whiteout, then fade out white
+      // 4. Reveal new background & message bubbles, fade white away
       setTimeout(() => {
         innerWorld.classList.add('visible');
         gateLeft.style.display = 'none';
         gateRight.style.display = 'none';
         genshinFlash.style.opacity = '0';
-      }, 2400);
+      }, 2300);
     }
   </script>
 </body>
