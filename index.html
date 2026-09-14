@@ -204,7 +204,7 @@
       position: absolute;
       top: 0; left: 0;
       width: 100vw; height: 100dvh;
-      background: radial-gradient(circle at center, #1e0938 0%, #06020a 100%);
+      background: radial-gradient(circle at center, #1a0832 0%, #050109 100%);
       z-index: 5;
       opacity: 0;
       transition: opacity 1s ease;
@@ -214,24 +214,28 @@
 
     .board-viewport.visible { opacity: 1; }
 
-    /* Fixed Header Bar */
+    /* Fixed Header Bar with Custom Title & Subtitle */
     .canvas-title-bar {
       position: absolute;
       top: 0; left: 0; right: 0;
-      padding: 24px 20px 20px;
+      padding: 20px 20px 15px 20px;
       z-index: 50;
       text-align: center;
       pointer-events: none;
-      background: linear-gradient(to bottom, rgba(7, 2, 13, 0.95) 60%, rgba(7, 2, 13, 0));
+      background: linear-gradient(to bottom, rgba(7, 2, 13, 0.95) 70%, rgba(7, 2, 13, 0));
       backdrop-filter: blur(8px);
     }
 
     .canvas-title {
       font-family: 'Cinzel', serif;
-      font-size: 1.4rem;
-      letter-spacing: 4px;
-      color: #f3e8ff;
+      font-size: 1.15rem;
+      letter-spacing: 2.5px;
+      color: #fceeff;
       text-shadow: 0 0 15px rgba(192, 132, 252, 0.8);
+      max-width: 900px;
+      margin: 0 auto;
+      line-height: 1.4;
+      text-transform: lowercase;
     }
 
     .canvas-hint {
@@ -239,7 +243,36 @@
       letter-spacing: 1.5px;
       color: #d8b4fe;
       opacity: 0.75;
-      margin-top: 5px;
+      margin-top: 6px;
+    }
+
+    /* Top Middle "Click to View Random" Button */
+    .random-btn {
+      position: absolute;
+      top: 85px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 60;
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      color: #ffffff;
+      background: rgba(147, 51, 234, 0.45);
+      border: 1px solid rgba(216, 180, 254, 0.8);
+      padding: 8px 22px;
+      border-radius: 25px;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .random-btn:hover, .random-btn:active {
+      background: rgba(192, 132, 252, 0.9);
+      color: #07020d;
+      box-shadow: 0 0 30px rgba(192, 132, 252, 1);
+      transform: translateX(-50%) scale(1.06);
     }
 
     .board-canvas {
@@ -249,17 +282,22 @@
       top: -1200px;
       left: -1200px;
       transform-origin: center center;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
       cursor: grab;
       background-image: 
-        radial-gradient(rgba(216, 180, 254, 0.18) 1px, transparent 1px),
-        radial-gradient(rgba(244, 114, 182, 0.18) 1px, transparent 1px);
+        radial-gradient(rgba(216, 180, 254, 0.2) 1.5px, transparent 1.5px),
+        radial-gradient(rgba(244, 114, 182, 0.2) 1.5px, transparent 1.5px);
       background-size: 70px 70px, 140px 140px;
       background-position: 0 0, 35px 35px;
     }
 
+    .board-canvas.no-transition {
+      transition: none !important;
+    }
+
     .board-canvas:active { cursor: grabbing; }
 
-    /* --- ORGANIC SVG CLOUD CARDS --- */
+    /* --- VIBRANT COLORFUL SVG CLOUD CARDS --- */
     .cloud-wrapper {
       position: absolute;
       display: inline-flex;
@@ -274,7 +312,11 @@
       z-index: 60;
     }
 
-    /* SVG Background Container Stretching Dynamically */
+    .cloud-wrapper.highlighted {
+      filter: drop-shadow(0 0 35px #ffffff) !important;
+      z-index: 70 !important;
+    }
+
     .cloud-svg-bg {
       position: absolute;
       top: 0; left: 0;
@@ -294,20 +336,20 @@
       align-items: center;
     }
 
-    /* ~J Clouds Styling */
+    /* ~J Vivid Pink/Magenta Clouds with Lined Stripes & Glow */
     .cloud-j .cloud-svg-bg path {
-      fill: rgba(55, 12, 65, 0.92);
-      stroke: rgba(244, 114, 182, 0.75);
-      stroke-width: 3;
-      filter: drop-shadow(0px 0px 22px rgba(244, 114, 182, 0.5));
+      fill: url(#pinkCloudGrad);
+      stroke: #f472b6;
+      stroke-width: 3.5;
+      filter: drop-shadow(0px 0px 25px rgba(244, 114, 182, 0.85));
     }
 
-    /* ~M Clouds Styling */
+    /* ~M Vivid Purple/Violet Clouds with Lined Stripes & Glow */
     .cloud-m .cloud-svg-bg path {
-      fill: rgba(25, 10, 55, 0.92);
-      stroke: rgba(192, 132, 252, 0.75);
-      stroke-width: 3;
-      filter: drop-shadow(0px 0px 22px rgba(168, 85, 247, 0.5));
+      fill: url(#purpleCloudGrad);
+      stroke: #c084fc;
+      stroke-width: 3.5;
+      filter: drop-shadow(0px 0px 25px rgba(168, 85, 247, 0.85));
     }
 
     .cloud-text {
@@ -316,28 +358,30 @@
       line-height: 1.6;
       white-space: pre-line;
       margin-bottom: 8px;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.85);
+      font-weight: 500;
     }
 
     .cloud-song {
       font-style: italic;
-      font-size: 0.78rem;
-      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.85);
       letter-spacing: 0.8px;
       margin-bottom: 6px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.9);
     }
 
-    /* Bottom Initial Marker */
+    /* Initial Marker at Bottom */
     .cloud-initial {
       font-family: 'Cinzel', serif;
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 700;
       letter-spacing: 2px;
       margin-top: 4px;
     }
 
-    .cloud-j .cloud-initial { color: #f472b6; text-shadow: 0 0 10px rgba(244, 114, 182, 0.8); }
-    .cloud-m .cloud-initial { color: #c084fc; text-shadow: 0 0 10px rgba(192, 132, 252, 0.8); }
+    .cloud-j .cloud-initial { color: #ffe4e6; text-shadow: 0 0 10px rgba(244, 114, 182, 1); }
+    .cloud-m .cloud-initial { color: #f3e8ff; text-shadow: 0 0 10px rgba(192, 132, 252, 1); }
 
     @keyframes floatCloud {
       0% { transform: translateY(0px) rotate(0deg); }
@@ -378,11 +422,36 @@
       .cloud-content { padding: 42px 48px 38px 48px; }
       .initials { font-size: 3.2rem; }
       .sigil-ring { width: 190px; height: 190px; }
-      .canvas-title { font-size: 1.1rem; }
+      .canvas-title { font-size: 0.95rem; }
+      .random-btn { top: 95px; font-size: 0.7rem; padding: 7px 18px; }
     }
   </style>
 </head>
 <body>
+
+  <!-- GLOBAL SVG GRADIENTS & STRIPE PATTERNS -->
+  <svg style="height: 0; width: 0; position: absolute;" aria-hidden="true">
+    <defs>
+      <!-- Stripe Pattern for Clouds -->
+      <pattern id="cloudStripes" width="20" height="20" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="20" stroke="rgba(255, 255, 255, 0.08)" stroke-width="4" />
+      </pattern>
+
+      <!-- Pink Cloud Gradient (~J) -->
+      <linearGradient id="pinkCloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#831843" stop-opacity="0.95" />
+        <stop offset="50%" stop-color="#be185d" stop-opacity="0.92" />
+        <stop offset="100%" stop-color="#500724" stop-opacity="0.95" />
+      </linearGradient>
+
+      <!-- Purple Cloud Gradient (~M) -->
+      <linearGradient id="purpleCloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#4c1d95" stop-opacity="0.95" />
+        <stop offset="50%" stop-color="#6b21a8" stop-opacity="0.92" />
+        <stop offset="100%" stop-color="#2e1065" stop-opacity="0.95" />
+      </linearGradient>
+    </defs>
+  </svg>
 
   <audio id="gateOpenSound" preload="auto">
     <source src="https://raw.githubusercontent.com/themadeehaanwar/lovers/main/gate%20opening.mp3" type="audio/mpeg">
@@ -401,7 +470,7 @@
       <button class="enter-btn" onclick="openGates(event)">ENTER</button>
     </div>
 
-    <!-- PAGE 2: CHAT VISION (Tapping anywhere advances to Page 3) -->
+    <!-- PAGE 2: CHAT VISION -->
     <div class="inner-world" id="innerWorld" onclick="transitionToBoard()">
       <div></div>
       <div class="chat-container">
@@ -419,10 +488,14 @@
     <!-- PAGE 3: INFINITE CANVAS -->
     <div class="board-viewport" id="boardViewport">
       
+      <!-- Restored Header & Subtitle -->
       <div class="canvas-title-bar">
-        <h1 class="canvas-title">Our Playlist Board</h1>
+        <h1 class="canvas-title">our shared playlist: all the lyrics we wish we wrote ourselves but found in music...</h1>
         <p class="canvas-hint">Drag around & pinch/scroll to zoom in or out</p>
       </div>
+
+      <!-- Click to View Random Button -->
+      <button class="random-btn" onclick="focusRandomCloud()">✨ Click to view random</button>
 
       <div class="board-canvas" id="boardCanvas">
         
@@ -430,6 +503,7 @@
         <div class="cloud-wrapper cloud-m" style="top: 1320px; left: 980px; width: 440px; animation-delay: 0s;">
           <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
             <path d="M 60 160 C 20 160 10 120 40 90 C 20 50 70 20 120 40 C 160 10 240 10 280 40 C 330 10 380 50 360 100 C 390 130 380 180 340 180 C 320 220 250 230 200 200 C 150 230 80 220 60 160 Z" />
+            <path d="M 60 160 C 20 160 10 120 40 90 C 20 50 70 20 120 40 C 160 10 240 10 280 40 C 330 10 380 50 360 100 C 390 130 380 180 340 180 C 320 220 250 230 200 200 C 150 230 80 220 60 160 Z" fill="url(#cloudStripes)" />
           </svg>
           <div class="cloud-content">
             <div class="cloud-text">bulaave tujhe yaar ajj meri galiyaa, basaau tere sang main alag duniya, na aae kabhi dono mein zara bhi faasle, bas ek tu ho ek mai hoon aur koi na</div>
@@ -442,6 +516,7 @@
         <div class="cloud-wrapper cloud-j" style="top: 1120px; left: 1540px; width: 450px; animation-delay: -2s;">
           <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
             <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" />
+            <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" fill="url(#cloudStripes)" />
           </svg>
           <div class="cloud-content">
             <div class="cloud-text">Tujhse mili to seekha maine hansna, aaya mujhe safar mein thheherna, main to bhool gayi duniya ka pata yaar jab se tujhe hai jaana</div>
@@ -454,6 +529,7 @@
         <div class="cloud-wrapper cloud-j" style="top: 1780px; left: 740px; width: 400px; animation-delay: -1s;">
           <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
             <path d="M 60 160 C 20 160 10 120 40 90 C 20 50 70 20 120 40 C 160 10 240 10 280 40 C 330 10 380 50 360 100 C 390 130 380 180 340 180 C 320 220 250 230 200 200 C 150 230 80 220 60 160 Z" />
+            <path d="M 60 160 C 20 160 10 120 40 90 C 20 50 70 20 120 40 C 160 10 240 10 280 40 C 330 10 380 50 360 100 C 390 130 380 180 340 180 C 320 220 250 230 200 200 C 150 230 80 220 60 160 Z" fill="url(#cloudStripes)" />
           </svg>
           <div class="cloud-content">
             <div class="cloud-text">Baatein teri itni haseen
@@ -468,6 +544,7 @@ Phulo si aae khushbu</div>
         <div class="cloud-wrapper cloud-m" style="top: 1680px; left: 1420px; width: 430px; animation-delay: -3.5s;">
           <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
             <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" />
+            <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" fill="url(#cloudStripes)" />
           </svg>
           <div class="cloud-content">
             <div class="cloud-text">rakh lu chhupa ke, main kahi tujhko
@@ -483,6 +560,7 @@ saath tere, main hi rahu</div>
         <div class="cloud-wrapper cloud-j" style="top: 760px; left: 1140px; width: 480px; animation-delay: -4s;">
           <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
             <path d="M 60 160 C 20 160 10 120 40 90 C 20 50 70 20 120 40 C 160 10 240 10 280 40 C 330 10 380 50 360 100 C 390 130 380 180 340 180 C 320 220 250 230 200 200 C 150 230 80 220 60 160 Z" />
+            <path d="M 60 160 C 20 160 10 120 40 90 C 20 50 70 20 120 40 C 160 10 240 10 280 40 C 330 10 380 50 360 100 C 390 130 380 180 340 180 C 320 220 250 230 200 200 C 150 230 80 220 60 160 Z" fill="url(#cloudStripes)" />
           </svg>
           <div class="cloud-content">
             <div class="cloud-text">She's gold*, she's dark, she's cynical
@@ -500,6 +578,7 @@ She's an* angel, and* she is my religion</div>
         <div class="cloud-wrapper cloud-m" style="top: 2180px; left: 1180px; width: 440px; animation-delay: -1.5s;">
           <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
             <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" />
+            <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" fill="url(#cloudStripes)" />
           </svg>
           <div class="cloud-content">
             <div class="cloud-text">Wish I could keep you in amber
@@ -517,6 +596,7 @@ Hope that you'll always stay gold</div>
         <div class="cloud-wrapper cloud-j" style="top: 1440px; left: 450px; width: 420px; animation-delay: -2.8s;">
           <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
             <path d="M 60 160 C 20 160 10 120 40 90 C 20 50 70 20 120 40 C 160 10 240 10 280 40 C 330 10 380 50 360 100 C 390 130 380 180 340 180 C 320 220 250 230 200 200 C 150 230 80 220 60 160 Z" />
+            <path d="M 60 160 C 20 160 10 120 40 90 C 20 50 70 20 120 40 C 160 10 240 10 280 40 C 330 10 380 50 360 100 C 390 130 380 180 340 180 C 320 220 250 230 200 200 C 150 230 80 220 60 160 Z" fill="url(#cloudStripes)" />
           </svg>
           <div class="cloud-content">
             <div class="cloud-text">Ham khaamoshi padh lеnge agar chup tum raho
@@ -530,6 +610,7 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
         <div class="cloud-wrapper cloud-m" style="top: 1480px; left: 1980px; width: 420px; animation-delay: -0.5s;">
           <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
             <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" />
+            <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" fill="url(#cloudStripes)" />
           </svg>
           <div class="cloud-content">
             <div class="cloud-text">"tum haath thaam lena, hum savar jaayenge"</div>
@@ -606,9 +687,10 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
       alert("Next Page trigger clicked! Ready for the next section.");
     }
 
-    /* --- Interactive Canvas Logic (Pan & Zoom) --- */
+    /* --- Interactive Canvas Logic (Pan, Zoom, & Focus Random) --- */
     const viewport = document.getElementById('boardViewport');
     const canvas = document.getElementById('boardCanvas');
+    const clouds = document.querySelectorAll('.cloud-wrapper');
 
     let scale = 0.85;
     let panX = 0;
@@ -628,12 +710,47 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
       updateTransform();
     }
 
+    /* "Click to View Random" Logic */
+    let lastRandomIndex = -1;
+    function focusRandomCloud() {
+      if (clouds.length === 0) return;
+
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * clouds.length);
+      } while (clouds.length > 1 && randomIndex === lastRandomIndex);
+      lastRandomIndex = randomIndex;
+
+      const targetCloud = clouds[randomIndex];
+
+      clouds.forEach(c => c.classList.remove('highlighted'));
+      targetCloud.classList.add('highlighted');
+
+      const cloudTop = parseFloat(targetCloud.style.top);
+      const cloudLeft = parseFloat(targetCloud.style.left);
+      const cloudWidth = targetCloud.offsetWidth || 440;
+      const cloudHeight = targetCloud.offsetHeight || 220;
+
+      const cloudCenterX = cloudLeft + (cloudWidth / 2);
+      const cloudCenterY = cloudTop + (cloudHeight / 2);
+
+      scale = 1.1; // Zoom in for clear reading
+      panX = (window.innerWidth / 2) - (cloudCenterX * scale);
+      panY = (window.innerHeight / 2) - (cloudCenterY * scale);
+
+      canvas.classList.remove('no-transition');
+      updateTransform();
+    }
+
     function zoomCanvas(amount) {
+      canvas.classList.add('no-transition');
       scale = Math.min(Math.max(0.3, scale + amount), 2.2);
       updateTransform();
     }
 
     viewport.addEventListener('mousedown', (e) => {
+      if (e.target.closest('.random-btn') || e.target.closest('.next-nav-btn')) return;
+      canvas.classList.add('no-transition');
       isDragging = true;
       startX = e.clientX - panX;
       startY = e.clientY - panY;
@@ -655,6 +772,8 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
     }, { passive: false });
 
     viewport.addEventListener('touchstart', (e) => {
+      if (e.target.closest('.random-btn') || e.target.closest('.next-nav-btn')) return;
+      canvas.classList.add('no-transition');
       if (e.touches.length === 1) {
         isDragging = true;
         startX = e.touches[0].clientX - panX;
