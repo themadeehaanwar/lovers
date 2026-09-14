@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>J & M — Our Sacred Realm</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
   
@@ -11,26 +11,25 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     body, html {
-      width: 100%;
-      height: 100%;
-      overflow-x: hidden;
-      font-family: 'Montserrat', sans-serif;
-      background-color: #0b0416;
-      color: #ffffff;
-    }
-
-    /* --- Outer Viewport Container (Dynamic Mobile Viewport) --- */
-    .realm-wrapper {
-      position: relative;
       width: 100vw;
       height: 100vh;
       height: 100dvh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      overflow: hidden;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #07020d;
+      color: #ffffff;
+    }
+
+    /* --- Outer Wrapper --- */
+    .realm-wrapper {
+      position: relative;
+      width: 100vw;
+      height: 100dvh;
       overflow: hidden;
     }
 
@@ -44,7 +43,7 @@
       background-size: 100vw 100dvh;
       background-repeat: no-repeat;
       transition: transform 0.5s cubic-bezier(0.7, 0, 0.2, 1), filter 0.5s ease;
-      z-index: 10;
+      z-index: 100;
     }
 
     .gate-left {
@@ -68,8 +67,10 @@
     }
 
     .center-seal {
-      position: relative;
-      z-index: 20;
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 110;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -143,7 +144,7 @@
       background: #ffffff;
       opacity: 0;
       pointer-events: none;
-      z-index: 100;
+      z-index: 200;
       transition: opacity 0.4s ease-in-out;
     }
 
@@ -160,7 +161,7 @@
       background-image: url('https://lh3.googleusercontent.com/d/1vDVAKRCK6sIUcZqofTpXzGP4TU38Pfsk');
       background-size: cover;
       background-position: center;
-      z-index: 1;
+      z-index: 10;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -196,43 +197,19 @@
       color: #fceeff;
       font-size: 1rem;
       line-height: 1.6;
-      letter-spacing: 0.3px;
+      border-radius: 20px;
       box-shadow: 0 8px 32px rgba(138, 43, 226, 0.3), inset 0 0 15px rgba(192, 132, 252, 0.2);
     }
 
     .chat-left {
       align-self: flex-start;
-      border-radius: 20px 20px 20px 4px;
-      animation: floatSlow 6s ease-in-out infinite alternate;
+      border-bottom-left-radius: 4px;
     }
 
     .chat-right {
       align-self: flex-end;
-      border-radius: 20px 20px 4px 20px;
       background: rgba(70, 20, 100, 0.55);
-      animation: floatSlow 7s ease-in-out infinite alternate-reverse;
-    }
-
-    .chat-left::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: -10px;
-      width: 0; height: 0;
-      border-style: solid;
-      border-width: 0 12px 14px 0;
-      border-color: transparent rgba(30, 10, 50, 0.55) transparent transparent;
-    }
-
-    .chat-right::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      right: -10px;
-      width: 0; height: 0;
-      border-style: solid;
-      border-width: 0 0 14px 12px;
-      border-color: transparent transparent rgba(70, 20, 100, 0.55) transparent;
+      border-bottom-right-radius: 4px;
     }
 
     .tap-continue {
@@ -242,172 +219,195 @@
       text-transform: uppercase;
       animation: purpleWhiteBreathe 3s ease-in-out infinite;
       cursor: pointer;
-      user-select: none;
       padding-bottom: 10px;
     }
 
     @keyframes purpleWhiteBreathe {
       0%, 100% {
         color: #c084fc;
-        text-shadow: 0 0 10px rgba(192, 132, 252, 0.8), 0 0 20px rgba(168, 85, 247, 0.5);
+        text-shadow: 0 0 10px rgba(192, 132, 252, 0.8);
         opacity: 0.7;
       }
       50% {
         color: #ffffff;
-        text-shadow: 0 0 12px rgba(255, 255, 255, 0.9), 0 0 22px rgba(216, 180, 254, 0.8);
+        text-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
         opacity: 1;
       }
     }
 
-    /* --- PAGE 3: SHARED PLAYLIST STAR BUBBLES --- */
-    .playlist-world {
+    /* --- PAGE 3: INFINITE CANVAS WHITEBOARD --- */
+    .board-viewport {
       position: absolute;
       top: 0; left: 0;
-      width: 100vw; 
+      width: 100vw;
       height: 100dvh;
-      background: radial-gradient(circle at center, #17092c 0%, #07020d 100%);
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 30px 15px 40px 15px;
+      background: radial-gradient(circle at center, #1b0a33 0%, #06020a 100%);
+      z-index: 5;
       opacity: 0;
-      transition: opacity 1s ease, transform 1s ease;
-      overflow-y: auto;
+      transition: opacity 1s ease;
+      overflow: hidden;
+      touch-action: none; /* Crucial for custom zoom & pan */
+    }
+
+    .board-viewport.visible {
+      opacity: 1;
+    }
+
+    /* The Pan & Zoom Container */
+    .board-canvas {
+      position: absolute;
+      width: 3000px;
+      height: 3000px;
+      top: -1000px;
+      left: -1000px;
+      transform-origin: center center;
+      cursor: grab;
+      background-image: 
+        radial-gradient(rgba(216, 180, 254, 0.15) 1px, transparent 1px),
+        radial-gradient(rgba(244, 114, 182, 0.15) 1px, transparent 1px);
+      background-size: 60px 60px, 120px 120px;
+      background-position: 0 0, 30px 30px;
+    }
+
+    .board-canvas:active {
+      cursor: grabbing;
+    }
+
+    /* Fixed UI Header */
+    .canvas-title-bar {
+      position: absolute;
+      top: 20px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 30;
+      text-align: center;
       pointer-events: none;
     }
 
-    .playlist-world.visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .playlist-header {
-      text-align: center;
-      margin-top: 10px;
-      margin-bottom: 25px;
-      max-width: 700px;
-    }
-
-    .playlist-title {
+    .canvas-title {
       font-family: 'Cinzel', serif;
-      font-size: 1.8rem;
-      font-weight: 700;
+      font-size: 1.4rem;
       letter-spacing: 4px;
       color: #f3e8ff;
-      text-shadow: 0 0 25px rgba(192, 132, 252, 0.8);
-      margin-bottom: 8px;
+      text-shadow: 0 0 15px rgba(192, 132, 252, 0.8);
     }
 
-    .playlist-subtext {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.82rem;
-      letter-spacing: 0.5px;
+    .canvas-hint {
+      font-size: 0.75rem;
+      letter-spacing: 1px;
       color: #d8b4fe;
-      opacity: 0.85;
-      line-height: 1.5;
-      font-weight: 300;
+      opacity: 0.7;
+      margin-top: 4px;
     }
 
-    /* Star Lyric Stream Container */
-    .star-stream {
-      width: 100%;
-      max-width: 800px;
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-      padding-bottom: 30px;
+    /* Cloud Lyric Bubbles */
+    .cloud-bubble {
+      position: absolute;
+      width: 320px;
+      padding: 24px 26px;
+      border-radius: 40px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: floatCloud 7s ease-in-out infinite alternate;
     }
 
-    /* Base Lyric Bubble */
-    .lyric-bubble {
-      position: relative;
-      max-width: 88%;
-      padding: 20px 22px;
-      border-radius: 20px;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      line-height: 1.7;
-      animation: floatSlow 6s ease-in-out infinite alternate;
-      transition: transform 0.3s ease;
+    .cloud-bubble:hover {
+      transform: scale(1.05) !important;
+      z-index: 50;
     }
 
-    .lyric-bubble:hover {
-      transform: scale(1.02);
+    /* ~J Cloud Styling (Her) */
+    .cloud-j {
+      background: rgba(55, 18, 70, 0.6);
+      border: 1px solid rgba(244, 114, 182, 0.5);
+      box-shadow: 0 0 35px rgba(244, 114, 182, 0.25), inset 0 0 20px rgba(244, 114, 182, 0.15);
+      border-bottom-left-radius: 10px;
     }
 
-    /* ~J Bubbles (Her Side) */
-    .bubble-j {
-      align-self: flex-start;
-      background: rgba(45, 15, 60, 0.55);
-      border: 1px solid rgba(244, 114, 182, 0.4);
-      box-shadow: 0 0 25px rgba(219, 39, 119, 0.2), inset 0 0 15px rgba(244, 114, 182, 0.1);
-      border-bottom-left-radius: 4px;
+    /* ~M Cloud Styling (Yours) */
+    .cloud-m {
+      background: rgba(22, 18, 65, 0.6);
+      border: 1px solid rgba(192, 132, 252, 0.5);
+      box-shadow: 0 0 35px rgba(168, 85, 247, 0.25), inset 0 0 20px rgba(192, 132, 252, 0.15);
+      border-bottom-right-radius: 10px;
     }
 
-    /* ~M Bubbles (Your Side) */
-    .bubble-m {
-      align-self: flex-end;
-      background: rgba(20, 15, 60, 0.55);
-      border: 1px solid rgba(192, 132, 252, 0.4);
-      box-shadow: 0 0 25px rgba(147, 51, 234, 0.2), inset 0 0 15px rgba(192, 132, 252, 0.1);
-      border-bottom-right-radius: 4px;
-      animation-duration: 7.5s;
-      animation-delay: -1.5s;
-    }
-
-    .bubble-header {
+    .cloud-header {
       font-family: 'Cinzel', serif;
       font-size: 0.95rem;
       font-weight: 700;
       letter-spacing: 2px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
       gap: 6px;
     }
 
-    .bubble-j .bubble-header {
-      color: #f472b6;
-      text-shadow: 0 0 10px rgba(244, 114, 182, 0.6);
-    }
+    .cloud-j .cloud-header { color: #f472b6; text-shadow: 0 0 10px rgba(244, 114, 182, 0.6); }
+    .cloud-m .cloud-header { color: #c084fc; text-shadow: 0 0 10px rgba(192, 132, 252, 0.6); }
 
-    .bubble-m .bubble-header {
-      color: #c084fc;
-      text-shadow: 0 0 10px rgba(192, 132, 252, 0.6);
-    }
-
-    .bubble-text {
-      font-size: 0.98rem;
+    .cloud-text {
+      font-size: 0.94rem;
       color: #fceeff;
+      line-height: 1.65;
       white-space: pre-line;
-      letter-spacing: 0.3px;
       margin-bottom: 12px;
+      font-weight: 400;
     }
 
-    .bubble-song {
+    .cloud-song {
       font-style: italic;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: rgba(255, 255, 255, 0.45);
       text-align: right;
       letter-spacing: 0.8px;
     }
 
-    @keyframes floatSlow {
-      0% { transform: translateY(0px); }
-      100% { transform: translateY(-10px); }
+    @keyframes floatCloud {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-12px) rotate(1deg); }
+    }
+
+    /* --- Floating Board Navigation Controls --- */
+    .zoom-controls {
+      position: absolute;
+      bottom: 25px;
+      right: 25px;
+      z-index: 30;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .ctrl-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(20, 10, 35, 0.75);
+      border: 1px solid rgba(192, 132, 252, 0.5);
+      color: #f3e8ff;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+      transition: all 0.2s ease;
+    }
+
+    .ctrl-btn:active {
+      transform: scale(0.9);
+      background: rgba(192, 132, 252, 0.8);
+      color: #07020d;
     }
 
     @media (max-width: 600px) {
-      .chat-bubble, .lyric-bubble {
-        max-width: 92%;
-        font-size: 0.92rem;
-        padding: 16px 18px;
-      }
+      .cloud-bubble { width: 280px; padding: 20px; }
       .initials { font-size: 3.2rem; }
       .sigil-ring { width: 190px; height: 190px; }
-      .playlist-title { font-size: 1.5rem; }
-      .bubble-text { font-size: 0.92rem; }
+      .canvas-title { font-size: 1.1rem; }
     }
   </style>
 </head>
@@ -418,7 +418,7 @@
     <source src="https://raw.githubusercontent.com/themadeehaanwar/lovers/main/gate%20opening.mp3" type="audio/mpeg">
   </audio>
 
-  <div class="realm-wrapper" id="realmWrapper">
+  <div class="realm-wrapper">
     
     <!-- PAGE 1: GATES -->
     <div class="gate-door gate-left" id="gateLeft"></div>
@@ -433,7 +433,7 @@
 
     <!-- PAGE 2: CHAT VISION -->
     <div class="inner-world" id="innerWorld">
-      <div></div><!-- Spacer -->
+      <div></div>
       <div class="chat-container">
         <div class="chat-bubble chat-left">
           "You say I am your god but you are my religion, my one true love and life, my existence is all for you"
@@ -443,76 +443,100 @@
         </div>
       </div>
 
-      <div class="tap-continue" onclick="transitionToPlaylist()">Tap to continue</div>
+      <div class="tap-continue" onclick="transitionToBoard()">Tap to continue</div>
     </div>
 
-    <!-- PAGE 3: OUR SHARED PLAYLIST (STAR BUBBLES) -->
-    <div class="playlist-world" id="playlistWorld">
-      <div class="playlist-header">
-        <h1 class="playlist-title">Our Shared Playlist</h1>
-        <p class="playlist-subtext">All the lyrics we wish we wrote ourselves but found in the music we share.</p>
+    <!-- PAGE 3: INFINITE WHITEBOARD CANVAS -->
+    <div class="board-viewport" id="boardViewport">
+      
+      <div class="canvas-title-bar">
+        <h1 class="canvas-title">Our Playlist Board</h1>
+        <p class="canvas-hint">Drag around & pinch/scroll to zoom in or out</p>
       </div>
 
-      <div class="star-stream">
+      <div class="board-canvas" id="boardCanvas">
         
-        <!-- Lyric 1: ~M -->
-        <div class="lyric-bubble bubble-m">
-          <div class="bubble-header">✨ ~M</div>
-          <div class="bubble-text">bulaave tujhe yaar ajj meri galiyaa, basaau tere sang main alag duniya, na aae kabhi dono mein zara bhi faasle, bas ek tu ho ek mai hoon aur koi na</div>
-          <div class="bubble-song">[Duniyaa]</div>
+        <!-- Cloud 1: ~M (Duniyaa) -->
+        <div class="cloud-bubble cloud-m" style="top: 1300px; left: 1200px; animation-delay: 0s;">
+          <div class="cloud-header">☁️ ~M</div>
+          <div class="cloud-text">bulaave tujhe yaar ajj meri galiyaa, basaau tere sang main alag duniya, na aae kabhi dono mein zara bhi faasle, bas ek tu ho ek mai hoon aur koi na</div>
+          <div class="cloud-song">[Duniyaa]</div>
         </div>
 
-        <!-- Lyric 2: ~J -->
-        <div class="lyric-bubble bubble-j">
-          <div class="bubble-header">✨ ~J</div>
-          <div class="bubble-text">Tujhse mili to seekha maine hansna, aaya mujhe safar mein thheherna, main to bhool gayi duniya ka pata yaar jab se tujhe hai jaana</div>
-          <div class="bubble-song">[Duniyaa]</div>
+        <!-- Cloud 2: ~J (Duniyaa) -->
+        <div class="cloud-bubble cloud-j" style="top: 1300px; left: 1560px; animation-delay: -2s;">
+          <div class="cloud-header">☁️ ~J</div>
+          <div class="cloud-text">Tujhse mili to seekha maine hansna, aaya mujhe safar mein thheherna, main to bhool gayi duniya ka pata yaar jab se tujhe hai jaana</div>
+          <div class="cloud-song">[Duniyaa]</div>
         </div>
 
-        <!-- Lyric 3: ~J -->
-        <div class="lyric-bubble bubble-j">
-          <div class="bubble-header">✨ ~J</div>
-          <div class="bubble-text">Baatein teri itni haseen
+        <!-- Cloud 3: ~J (Maula Mere Maula) -->
+        <div class="cloud-bubble cloud-j" style="top: 1650px; left: 1100px; animation-delay: -1s;">
+          <div class="cloud-header">☁️ ~J</div>
+          <div class="cloud-text">Baatein teri itni haseen
 Yaad mai inko jab karta hu
 Phulo si aae khushbu</div>
-          <div class="bubble-song">[Maula Mere Maula]</div>
+          <div class="cloud-song">[Maula Mere Maula]</div>
         </div>
 
-        <!-- Lyric 4: ~M -->
-        <div class="lyric-bubble bubble-m">
-          <div class="bubble-header">✨ ~M</div>
-          <div class="bubble-text">rakh lu chhupa ke, main kahi tujhko
+        <!-- Cloud 4: ~M (Maula Mere Maula) -->
+        <div class="cloud-bubble cloud-m" style="top: 1650px; left: 1480px; animation-delay: -3.5s;">
+          <div class="cloud-header">☁️ ~M</div>
+          <div class="cloud-text">rakh lu chhupa ke, main kahi tujhko
 saayaa bhi tera, naa mai du
 rakh lu bana ke kahi ghar, main tujhe
 saath tere, main hi rahu</div>
-          <div class="bubble-song">[Maula Mere Maula]</div>
+          <div class="cloud-song">[Maula Mere Maula]</div>
         </div>
 
-        <!-- Lyric 5: ~J -->
-        <div class="lyric-bubble bubble-j">
-          <div class="bubble-header">✨ ~J</div>
-          <div class="bubble-text">She's gold*, she's dark, she's cynical
+        <!-- Cloud 5: ~J (She's My Religion) -->
+        <div class="cloud-bubble cloud-j" style="top: 1000px; left: 1380px; animation-delay: -4s;">
+          <div class="cloud-header">☁️ ~J</div>
+          <div class="cloud-text">She's gold*, she's dark, she's cynical
 She's forever angry at the world
 She's an* angel, and* she is my religion
 Always finding ways to numb the pain
 She's mad and she will never change
 She's an* angel, and* she is my religion</div>
-          <div class="bubble-song">[She's My Religion*]</div>
+          <div class="cloud-song">[She's My Religion*]</div>
         </div>
 
-        <!-- Lyric 6: ~M -->
-        <div class="lyric-bubble bubble-m">
-          <div class="bubble-header">✨ ~M</div>
-          <div class="bubble-text">Wish I could keep you in amber
+        <!-- Cloud 6: ~M (Stay Gold) -->
+        <div class="cloud-bubble cloud-m" style="top: 2000px; left: 1350px; animation-delay: -1.5s;">
+          <div class="cloud-header">☁️ ~M</div>
+          <div class="cloud-text">Wish I could keep you in amber
 Safe from the outside
 Hope that you'll always stay gold
 Wish you could stay here forever
 Safe from this bad luck
 Hope that you'll always stay gold</div>
-          <div class="bubble-song">[Stay Gold]</div>
+          <div class="cloud-song">[Stay Gold]</div>
+        </div>
+
+        <!-- Cloud 7: ~J (Aakhon Se Batana) -->
+        <div class="cloud-bubble cloud-j" style="top: 1480px; left: 800px; animation-delay: -2.8s;">
+          <div class="cloud-header">☁️ ~J</div>
+          <div class="cloud-text">Ham khaamoshi padh lеnge agar chup tum raho
+Tum aadat bano hamaari, hum bigad jaayenge</div>
+          <div class="cloud-song">[Aakhon Se Batana]</div>
+        </div>
+
+        <!-- Cloud 8: ~M (Aakhon Se Batana) -->
+        <div class="cloud-bubble cloud-m" style="top: 1480px; left: 1880px; animation-delay: -0.5s;">
+          <div class="cloud-header">☁️ ~M</div>
+          <div class="cloud-text">"tum haath thaam lena, hum savar jaayenge"</div>
+          <div class="cloud-song">[Aakhon Se Batana]</div>
         </div>
 
       </div>
+
+      <!-- Navigation & Zoom UI Buttons -->
+      <div class="zoom-controls">
+        <button class="ctrl-btn" onclick="zoomCanvas(0.2)">+</button>
+        <button class="ctrl-btn" onclick="zoomCanvas(-0.2)">−</button>
+        <button class="ctrl-btn" onclick="resetCanvas()" style="font-size:0.8rem;">↺</button>
+      </div>
+
     </div>
 
   </div>
@@ -539,7 +563,7 @@ Hope that you'll always stay gold</div>
       const innerWorld = document.getElementById('innerWorld');
 
       centerSeal.style.opacity = '0';
-      centerSeal.style.transform = 'scale(1.2)';
+      centerSeal.style.transform = 'translate(-50%, -50%) scale(1.2)';
       centerSeal.style.pointerEvents = 'none';
 
       setTimeout(() => {
@@ -559,599 +583,111 @@ Hope that you'll always stay gold</div>
       }, 750);
     }
 
-    function transitionToPlaylist() {
+    function transitionToBoard() {
       const innerWorld = document.getElementById('innerWorld');
-      const playlistWorld = document.getElementById('playlistWorld');
+      const boardViewport = document.getElementById('boardViewport');
 
       innerWorld.style.opacity = '0';
       innerWorld.style.transform = 'scale(0.95)';
 
       setTimeout(() => {
         innerWorld.classList.remove('visible');
-        playlistWorld.classList.add('visible');
-      }, 600);
-    }
-  </script>
-</body>
-</html>
-
-    .subtitle {
-      font-family: 'Cinzel', serif;
-      font-size: 0.9rem;
-      letter-spacing: 5px;
-      color: #d8b4fe;
-      text-transform: uppercase;
-      margin-top: 5px;
-      margin-bottom: 25px;
-      text-shadow: 0 0 10px rgba(192, 132, 252, 0.8);
-    }
-
-    .enter-btn {
-      font-family: 'Cinzel', serif;
-      background: rgba(15, 7, 32, 0.75);
-      color: #f3e8ff;
-      border: 1px solid #c084fc;
-      padding: 12px 38px;
-      font-size: 1rem;
-      letter-spacing: 4px;
-      border-radius: 30px;
-      cursor: pointer;
-      backdrop-filter: blur(5px);
-      box-shadow: 0 0 25px rgba(192, 132, 252, 0.6);
-      transition: all 0.4s ease;
-    }
-
-    .enter-btn:hover {
-      background: rgba(192, 132, 252, 0.9);
-      color: #0d041a;
-      box-shadow: 0 0 40px rgba(192, 132, 252, 1);
-      transform: scale(1.06);
-    }
-
-    .genshin-flash {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: #ffffff;
-      opacity: 0;
-      pointer-events: none;
-      z-index: 100;
-      transition: opacity 0.4s ease-in-out;
-    }
-
-    .genshin-flash.active {
-      opacity: 1;
-    }
-
-    /* --- PAGE 2: CHAT VISION --- */
-    .inner-world {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background-image: url('https://lh3.googleusercontent.com/d/1vDVAKRCK6sIUcZqofTpXzGP4TU38Pfsk');
-      background-size: cover;
-      background-position: center;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      opacity: 0;
-      transition: opacity 0.8s ease, transform 0.8s ease;
-      overflow-y: auto;
-      pointer-events: none;
-    }
-
-    .inner-world.visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .chat-container {
-      width: 100%;
-      max-width: 850px;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      padding: 20px 10px;
-      margin-bottom: 40px;
-    }
-
-    .chat-bubble {
-      position: relative;
-      max-width: 80%;
-      padding: 20px 24px;
-      background: rgba(30, 10, 50, 0.55);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(216, 180, 254, 0.4);
-      color: #fceeff;
-      font-size: 1.05rem;
-      line-height: 1.7;
-      letter-spacing: 0.3px;
-      box-shadow: 0 8px 32px rgba(138, 43, 226, 0.3), inset 0 0 15px rgba(192, 132, 252, 0.2);
-    }
-
-    .chat-left {
-      align-self: flex-start;
-      border-radius: 20px 20px 20px 4px;
-      animation: floatSlow 6s ease-in-out infinite alternate;
-    }
-
-    .chat-right {
-      align-self: flex-end;
-      border-radius: 20px 20px 4px 20px;
-      background: rgba(70, 20, 100, 0.55);
-      animation: floatSlow 7s ease-in-out infinite alternate-reverse;
-    }
-
-    .chat-left::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: -10px;
-      width: 0; height: 0;
-      border-style: solid;
-      border-width: 0 12px 14px 0;
-      border-color: transparent rgba(30, 10, 50, 0.55) transparent transparent;
-    }
-
-    .chat-right::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      right: -10px;
-      width: 0; height: 0;
-      border-style: solid;
-      border-width: 0 0 14px 12px;
-      border-color: transparent transparent rgba(70, 20, 100, 0.55) transparent;
-    }
-
-    .tap-continue {
-      position: absolute;
-      bottom: 25px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      animation: purpleWhiteBreathe 3s ease-in-out infinite;
-      cursor: pointer;
-      user-select: none;
-      z-index: 5;
-    }
-
-    @keyframes purpleWhiteBreathe {
-      0%, 100% {
-        color: #c084fc;
-        text-shadow: 0 0 10px rgba(192, 132, 252, 0.8), 0 0 20px rgba(168, 85, 247, 0.5);
-        opacity: 0.7;
-      }
-      50% {
-        color: #ffffff;
-        text-shadow: 0 0 12px rgba(255, 255, 255, 0.9), 0 0 22px rgba(216, 180, 254, 0.8);
-        opacity: 1;
-      }
-    }
-
-    /* --- PAGE 3: CONSTELLATION CLOUD REALM --- */
-    .playlist-world {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: radial-gradient(circle at center, #17092c 0%, #07020d 100%);
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px 80px 20px;
-      opacity: 0;
-      transition: opacity 1s ease, transform 1s ease;
-      overflow-y: auto;
-      pointer-events: none;
-    }
-
-    .playlist-world.visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .playlist-header {
-      text-align: center;
-      margin-top: 20px;
-      margin-bottom: 35px;
-      max-width: 700px;
-    }
-
-    .playlist-title {
-      font-family: 'Cinzel', serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      letter-spacing: 5px;
-      color: #f3e8ff;
-      text-shadow: 0 0 25px rgba(192, 132, 252, 0.8);
-      margin-bottom: 12px;
-    }
-
-    .playlist-subtext {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-      color: #d8b4fe;
-      opacity: 0.85;
-      line-height: 1.6;
-      font-weight: 300;
-    }
-
-    /* Cloud Grid Visual */
-    .clouds-container {
-      width: 100%;
-      max-width: 1000px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 25px;
-      padding: 10px;
-    }
-
-    .cloud-node {
-      position: relative;
-      background: rgba(35, 15, 60, 0.4);
-      border: 1px solid rgba(192, 132, 252, 0.25);
-      backdrop-filter: blur(10px);
-      border-radius: 50px;
-      padding: 16px 30px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      box-shadow: 0 0 20px rgba(138, 43, 226, 0.15);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      animation: floatCloud 5s ease-in-out infinite alternate;
-    }
-
-    .cloud-node:nth-child(even) {
-      animation-duration: 6.5s;
-      animation-delay: -2s;
-    }
-
-    .cloud-node:hover {
-      transform: translateY(-5px) scale(1.04);
-      background: rgba(55, 25, 90, 0.65);
-      border-color: rgba(216, 180, 254, 0.6);
-      box-shadow: 0 0 30px rgba(192, 132, 252, 0.4);
-    }
-
-    .cloud-icon {
-      font-size: 1.3rem;
-      opacity: 0.8;
-    }
-
-    .cloud-tag {
-      font-family: 'Cinzel', serif;
-      font-size: 0.95rem;
-      letter-spacing: 2px;
-      color: #e9d5ff;
-      font-weight: 600;
-    }
-
-    .cloud-hint {
-      font-size: 0.75rem;
-      color: #a855f7;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      opacity: 0.7;
-    }
-
-    /* Modal / Verse Card Reveal Overlay */
-    .verse-modal-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(7, 2, 13, 0.85);
-      backdrop-filter: blur(8px);
-      z-index: 200;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.4s ease;
-    }
-
-    .verse-modal-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .verse-card {
-      position: relative;
-      width: 100%;
-      max-width: 580px;
-      padding: 35px 30px 30px 30px;
-      border-radius: 24px;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6);
-      transform: scale(0.9);
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .verse-modal-overlay.active .verse-card {
-      transform: scale(1);
-    }
-
-    /* Dedicated Colors per Person */
-    .verse-card.tag-j {
-      background: rgba(45, 15, 60, 0.75);
-      border: 1px solid rgba(236, 72, 153, 0.4);
-      box-shadow: 0 0 40px rgba(219, 39, 119, 0.25), inset 0 0 20px rgba(244, 114, 182, 0.15);
-    }
-
-    .verse-card.tag-m {
-      background: rgba(20, 15, 60, 0.75);
-      border: 1px solid rgba(168, 85, 247, 0.4);
-      box-shadow: 0 0 40px rgba(147, 51, 234, 0.25), inset 0 0 20px rgba(192, 132, 252, 0.15);
-    }
-
-    .card-person-tag {
-      font-family: 'Cinzel', serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      margin-bottom: 20px;
-    }
-
-    .verse-card.tag-j .card-person-tag {
-      color: #f472b6;
-      text-shadow: 0 0 10px rgba(244, 114, 182, 0.6);
-    }
-
-    .verse-card.tag-m .card-person-tag {
-      color: #c084fc;
-      text-shadow: 0 0 10px rgba(192, 132, 252, 0.6);
-    }
-
-    .card-lyrics {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: #fceeff;
-      white-space: pre-line;
-      margin-bottom: 25px;
-      letter-spacing: 0.3px;
-    }
-
-    .card-song-title {
-      font-family: 'Montserrat', sans-serif;
-      font-style: italic;
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.45);
-      text-align: right;
-      letter-spacing: 1px;
-    }
-
-    .close-card-btn {
-      position: absolute;
-      top: 15px; right: 20px;
-      background: none;
-      border: none;
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 1.5rem;
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    .close-card-btn:hover {
-      color: #ffffff;
-    }
-
-    @keyframes floatCloud {
-      0% { transform: translateY(0px); }
-      100% { transform: translateY(-12px); }
-    }
-
-    @keyframes floatSlow {
-      0% { transform: translateY(0px); }
-      100% { transform: translateY(-10px); }
-    }
-
-    @media (max-width: 600px) {
-      .chat-bubble {
-        max-width: 90%;
-        font-size: 0.95rem;
-        padding: 16px 18px;
-      }
-      .initials { font-size: 3rem; }
-      .sigil-ring { width: 200px; height: 200px; }
-      .playlist-title { font-size: 1.6rem; }
-      .verse-card { padding: 25px 20px 20px 20px; }
-      .card-lyrics { font-size: 0.95rem; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Audio Elements -->
-  <audio id="gateOpenSound" preload="auto">
-    <source src="https://raw.githubusercontent.com/themadeehaanwar/lovers/main/gate%20opening.mp3" type="audio/mpeg">
-  </audio>
-
-  <div class="realm-wrapper" id="realmWrapper">
-    
-    <!-- PAGE 1: GATES -->
-    <div class="gate-door gate-left" id="gateLeft"></div>
-    <div class="gate-door gate-right" id="gateRight"></div>
-
-    <div class="center-seal" id="centerSeal">
-      <div class="sigil-ring"></div>
-      <div class="initials">J & M</div>
-      <p class="subtitle">ENTER OUR WORLD</p>
-      <button class="enter-btn" onclick="openGates(event)">ENTER</button>
-    </div>
-
-    <!-- PAGE 2: CHAT VISION -->
-    <div class="inner-world" id="innerWorld">
-      <div class="chat-container">
-        <div class="chat-bubble chat-left">
-          "You say I am your god but you are my religion, my one true love and life, my existence is all for you"
-        </div>
-        <div class="chat-bubble chat-right">
-          "love like mine doesnt exist. i have loved you intensely, passionately, vehemently and hungrily, always finding another way to love you because worshipping you has never been enough"
-        </div>
-      </div>
-
-      <div class="tap-continue" onclick="transitionToPlaylist()">Tap to continue</div>
-    </div>
-
-    <!-- PAGE 3: OUR SHARED PLAYLIST (CLOUDS) -->
-    <div class="playlist-world" id="playlistWorld">
-      <div class="playlist-header">
-        <h1 class="playlist-title">Our Shared Playlist</h1>
-        <p class="playlist-subtext">All the lyrics we wish we wrote ourselves but found in the music we share.</p>
-      </div>
-
-      <div class="clouds-container">
-        
-        <!-- Cloud 1 -->
-        <div class="cloud-node" onclick="showVerse('m', 'bulaave tujhe yaar ajj meri galiyaa, basaau tere sang main alag duniya, na aae kabhi dono mein zara bhi faasle, bas ek tu ho ek mai hoon aur koi na', '[Duniyaa]')">
-          <span class="cloud-icon">☁️</span>
-          <span class="cloud-tag">~M</span>
-          <span class="cloud-hint">Tap to reveal</span>
-        </div>
-
-        <!-- Cloud 2 -->
-        <div class="cloud-node" onclick="showVerse('j', 'Tujhse mili to seekha maine hansna, aaya mujhe safar mein thheherna, main to bhool gayi duniya ka pata yaar jab se tujhe hai jaana', '[Duniyaa]')">
-          <span class="cloud-icon">☁️</span>
-          <span class="cloud-tag">~J</span>
-          <span class="cloud-hint">Tap to reveal</span>
-        </div>
-
-        <!-- Cloud 3 -->
-        <div class="cloud-node" onclick="showVerse('j', 'Baatein teri itni haseen\nYaad mai inko jab karta hu\nPhulo si aae khushbu', '[Maula Mere Maula]')">
-          <span class="cloud-icon">☁️</span>
-          <span class="cloud-tag">~J</span>
-          <span class="cloud-hint">Tap to reveal</span>
-        </div>
-
-        <!-- Cloud 4 -->
-        <div class="cloud-node" onclick="showVerse('m', 'rakh lu chhupa ke, main kahi tujhko\nsaayaa bhi tera, naa mai du\nrakh lu bana ke kahi ghar, main tujhe\nsaath tere, main hi rahu', '[Maula Mere Maula]')">
-          <span class="cloud-icon">☁️</span>
-          <span class="cloud-tag">~M</span>
-          <span class="cloud-hint">Tap to reveal</span>
-        </div>
-
-        <!-- Cloud 5 -->
-        <div class="cloud-node" onclick="showVerse('j', 'She\'s gold*, she\'s dark, she\'s cynical\nShe\'s forever angry at the world\nShe\'s an* angel, and* she is my religion\nAlways finding ways to numb the pain\nShe\'s mad and she will never change\nShe\'s an* angel, and* she is my religion', '[She\'s My Religion*]')">
-          <span class="cloud-icon">☁️</span>
-          <span class="cloud-tag">~J</span>
-          <span class="cloud-hint">Tap to reveal</span>
-        </div>
-
-        <!-- Cloud 6 -->
-        <div class="cloud-node" onclick="showVerse('m', 'Wish I could keep you in amber\nSafe from the outside\nHope that you\'ll always stay gold\nWish you could stay here forever\nSafe from this bad luck\nHope that you\'ll always stay gold', '[Stay Gold]')">
-          <span class="cloud-icon">☁️</span>
-          <span class="cloud-tag">~M</span>
-          <span class="cloud-hint">Tap to reveal</span>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Pure White Flash Overlay -->
-  <div class="genshin-flash" id="genshinFlash"></div>
-
-  <!-- Verse Card Modal Popup -->
-  <div class="verse-modal-overlay" id="verseModal" onclick="closeVerse()">
-    <div class="verse-card" id="verseCard" onclick="event.stopPropagation()">
-      <button class="close-card-btn" onclick="closeVerse()">✕</button>
-      <div class="card-person-tag" id="modalTag">~M</div>
-      <div class="card-lyrics" id="modalLyrics"></div>
-      <div class="card-song-title" id="modalSong"></div>
-    </div>
-  </div>
-
-  <script>
-    const gateOpenSound = document.getElementById('gateOpenSound');
-    if (gateOpenSound) gateOpenSound.volume = 1.0;
-
-    function openGates(e) {
-      if (e) e.stopPropagation();
-
-      if (gateOpenSound) {
-        gateOpenSound.currentTime = 0;
-        gateOpenSound.play().catch(err => console.log('Gate sound error:', err));
-      }
-
-      const gateLeft = document.getElementById('gateLeft');
-      const gateRight = document.getElementById('gateRight');
-      const centerSeal = document.getElementById('centerSeal');
-      const genshinFlash = document.getElementById('genshinFlash');
-      const innerWorld = document.getElementById('innerWorld');
-
-      centerSeal.style.opacity = '0';
-      centerSeal.style.transform = 'scale(1.2)';
-      centerSeal.style.pointerEvents = 'none';
-
-      setTimeout(() => {
-        gateLeft.classList.add('open-left');
-        gateRight.classList.add('open-right');
-      }, 50);
-
-      setTimeout(() => {
-        genshinFlash.classList.add('active');
-      }, 300);
-
-      setTimeout(() => {
-        innerWorld.classList.add('visible');
-        gateLeft.style.display = 'none';
-        gateRight.style.display = 'none';
-        genshinFlash.style.opacity = '0';
-      }, 750);
-    }
-
-    function transitionToPlaylist() {
-      const innerWorld = document.getElementById('innerWorld');
-      const playlistWorld = document.getElementById('playlistWorld');
-
-      innerWorld.style.opacity = '0';
-      innerWorld.style.transform = 'scale(0.95)';
-
-      setTimeout(() => {
-        innerWorld.classList.remove('visible');
-        playlistWorld.classList.add('visible');
+        boardViewport.classList.add('visible');
+        initBoardTransform();
       }, 600);
     }
 
-    function showVerse(person, lyrics, songTitle) {
-      const modal = document.getElementById('verseModal');
-      const card = document.getElementById('verseCard');
-      const tagEl = document.getElementById('modalTag');
-      const lyricsEl = document.getElementById('modalLyrics');
-      const songEl = document.getElementById('modalSong');
+    /* --- Interactive Canvas Logic (Pan & Zoom) --- */
+    const viewport = document.getElementById('boardViewport');
+    const canvas = document.getElementById('boardCanvas');
 
-      // Set side tag & card style
-      if (person === 'j') {
-        tagEl.innerText = '~J';
-        card.className = 'verse-card tag-j';
-      } else {
-        tagEl.innerText = '~M';
-        card.className = 'verse-card tag-m';
+    let scale = 0.85;
+    let panX = 0;
+    let panY = 0;
+    let isDragging = false;
+    let startX = 0, startY = 0;
+    let initialPinchDist = null;
+    let initialScale = 1;
+
+    function updateTransform() {
+      canvas.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
+    }
+
+    function initBoardTransform() {
+      // Center the board viewport around middle cloud group
+      panX = (window.innerWidth / 2) - 500;
+      panY = (window.innerHeight / 2) - 500;
+      updateTransform();
+    }
+
+    function zoomCanvas(amount) {
+      scale = Math.min(Math.max(0.3, scale + amount), 2.2);
+      updateTransform();
+    }
+
+    function resetCanvas() {
+      scale = 0.85;
+      initBoardTransform();
+    }
+
+    // Drag / Pan Mouse Events
+    viewport.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.clientX - panX;
+      startY = e.clientY - panY;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      panX = e.clientX - startX;
+      panY = e.clientY - startY;
+      updateTransform();
+    });
+
+    window.addEventListener('mouseup', () => { isDragging = false; });
+
+    // Mouse Wheel Zoom
+    viewport.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const zoomFactor = e.deltaY < 0 ? 0.08 : -0.08;
+      zoomCanvas(zoomFactor);
+    }, { passive: false });
+
+    // Touch Drag & Pinch Zoom (Mobile)
+    viewport.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        isDragging = true;
+        startX = e.touches[0].clientX - panX;
+        startY = e.touches[0].clientY - panY;
+      } else if (e.touches.length === 2) {
+        isDragging = false;
+        initialPinchDist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+        initialScale = scale;
       }
+    }, { passive: true });
 
-      lyricsEl.innerText = lyrics;
-      songEl.innerText = songTitle;
+    viewport.addEventListener('touchmove', (e) => {
+      if (isDragging && e.touches.length === 1) {
+        panX = e.touches[0].clientX - startX;
+        panY = e.touches[0].clientY - startY;
+        updateTransform();
+      } else if (e.touches.length === 2 && initialPinchDist) {
+        const dist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+        scale = Math.min(Math.max(0.3, initialScale * (dist / initialPinchDist)), 2.2);
+        updateTransform();
+      }
+    }, { passive: true });
 
-      modal.classList.add('active');
-    }
-
-    function closeVerse() {
-      const modal = document.getElementById('verseModal');
-      modal.classList.remove('active');
-    }
+    viewport.addEventListener('touchend', () => {
+      isDragging = false;
+      initialPinchDist = null;
+    });
   </script>
 </body>
 </html>
