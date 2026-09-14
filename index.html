@@ -56,7 +56,7 @@
       background-position: right center;
     }
 
-    /* Bright Opening Transition (No Dark Phase) */
+    /* Bright Opening Transition */
     .gate-door.open-left {
       transform: translateX(-100%) scale(1.05);
       filter: brightness(2) contrast(1.1);
@@ -153,7 +153,7 @@
       opacity: 1;
     }
 
-    /* --- Inner World Page (Drive Background Image) --- */
+    /* --- Inner World Page --- */
     .inner-world {
       position: absolute;
       top: 0; left: 0;
@@ -184,6 +184,7 @@
       flex-direction: column;
       gap: 30px;
       padding: 20px 10px;
+      margin-bottom: 40px;
     }
 
     /* Translucent Sparkly Chat Bubbles */
@@ -242,12 +243,37 @@
       border-color: transparent transparent rgba(70, 20, 100, 0.55) transparent;
     }
 
+    /* --- Purple to White Breathing Tap Text --- */
+    .tap-continue {
+      position: absolute;
+      bottom: 25px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: purpleWhiteBreathe 3s ease-in-out infinite;
+      cursor: pointer;
+    }
+
+    @keyframes purpleWhiteBreathe {
+      0%, 100% {
+        color: #c084fc;
+        text-shadow: 0 0 10px rgba(192, 132, 252, 0.8), 0 0 20px rgba(168, 85, 247, 0.5);
+        opacity: 0.7;
+      }
+      50% {
+        color: #ffffff;
+        text-shadow: 0 0 12px rgba(255, 255, 255, 0.9), 0 0 22px rgba(216, 180, 254, 0.8);
+        opacity: 1;
+      }
+    }
+
     @keyframes floatSlow {
       0% { transform: translateY(0px); }
       100% { transform: translateY(-10px); }
     }
 
-    /* --- Mobile Responsive Rules --- */
+    /* --- Mobile Responsive Adjustment --- */
     @media (max-width: 600px) {
       .chat-bubble {
         max-width: 90%;
@@ -256,7 +282,8 @@
       }
       
       .chat-container {
-        gap: 24px;
+        gap: 20px;
+        margin-bottom: 60px;
       }
 
       .initials {
@@ -271,6 +298,11 @@
   </style>
 </head>
 <body>
+
+  <!-- Gate Opening Audio Element -->
+  <audio id="gateSound" preload="auto">
+    <source src="https://drive.google.com/uc?export=download&id=1k-1uZrpelIhRLvlMIDXtbMX2dtsg46Dj" type="audio/mpeg">
+  </audio>
 
   <div class="realm-wrapper">
     
@@ -292,7 +324,7 @@
         
         <!-- Her Message (Left) -->
         <div class="chat-bubble chat-left">
-          "you say i am your god but you are my religion, my one true love and life, my existence is all for you"
+          "You say I am your god but you are my religion, my one true love and life, my existence is all for you"
         </div>
 
         <!-- Your Message (Right) -->
@@ -301,6 +333,9 @@
         </div>
 
       </div>
+
+      <!-- Breathing Purple to White Hint -->
+      <div class="tap-continue">Tap to continue</div>
     </div>
 
   </div>
@@ -315,13 +350,20 @@
       const centerSeal = document.getElementById('centerSeal');
       const genshinFlash = document.getElementById('genshinFlash');
       const innerWorld = document.getElementById('innerWorld');
+      const gateSound = document.getElementById('gateSound');
+
+      // Play Genshin Gate Sound Effect
+      if (gateSound) {
+        gateSound.currentTime = 0;
+        gateSound.play().catch(e => console.log('Audio playback prevented:', e));
+      }
 
       // 1. Hide seal
       centerSeal.style.opacity = '0';
       centerSeal.style.transform = 'scale(0.8)';
       centerSeal.style.pointerEvents = 'none';
 
-      // 2. Open gates with bright glow (no dimming)
+      // 2. Open gates with bright glow
       setTimeout(() => {
         gateLeft.classList.add('open-left');
         gateRight.classList.add('open-right');
@@ -332,7 +374,7 @@
         genshinFlash.classList.add('active');
       }, 1300);
 
-      // 4. Reveal new background & message bubbles, fade white away
+      // 4. Reveal inner world
       setTimeout(() => {
         innerWorld.classList.add('visible');
         gateLeft.style.display = 'none';
