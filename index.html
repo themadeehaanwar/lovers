@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>J & M — Our Sacred Realm</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
   
   <style>
     * {
@@ -33,17 +33,17 @@
       overflow: hidden;
     }
 
-    /* --- Splitting Gate Doors using your Drive Image --- */
+    /* --- Splitting Gate Doors (Google Drive Image) --- */
     .gate-door {
       position: absolute;
       top: 0;
       width: 50%;
       height: 100%;
       background-image: url('https://lh3.googleusercontent.com/d/1hShirb8fl51RN1IlX493-9HAaq760vCw');
-      background-size: 100vw 100vh; /* Scaled to span full screen seamlessly across both halves */
+      background-size: 100vw 100vh;
       background-repeat: no-repeat;
-      transition: transform 2.8s cubic-bezier(0.7, 0, 0.2, 1), filter 2.5s ease;
-      z-index: 5;
+      transition: transform 2.5s cubic-bezier(0.7, 0, 0.2, 1), filter 2s ease;
+      z-index: 10;
     }
 
     .gate-left {
@@ -56,15 +56,15 @@
       background-position: right center;
     }
 
-    /* Opening Animation States */
+    /* Gate Opening: Pure Brightness to White Transition */
     .gate-door.open-left {
       transform: translateX(-100%) scale(1.1);
-      filter: brightness(2) drop-shadow(0 0 50px #ffffff);
+      filter: brightness(2.5) contrast(1.2);
     }
 
     .gate-door.open-right {
       transform: translateX(100%) scale(1.1);
-      filter: brightness(2) drop-shadow(0 0 50px #ffffff);
+      filter: brightness(2.5) contrast(1.2);
     }
 
     /* --- Center J & M Emblem / Seal --- */
@@ -76,7 +76,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .sigil-ring {
@@ -120,9 +120,9 @@
       background: rgba(15, 7, 32, 0.75);
       color: #f3e8ff;
       border: 1px solid #c084fc;
-      padding: 12px 32px;
-      font-size: 0.95rem;
-      letter-spacing: 3px;
+      padding: 12px 38px;
+      font-size: 1rem;
+      letter-spacing: 4px;
       border-radius: 30px;
       cursor: pointer;
       backdrop-filter: blur(5px);
@@ -137,22 +137,88 @@
       transform: scale(1.06);
     }
 
-    /* --- Genshin Impact Style Full White Flash Transition --- */
+    /* --- Full White Flash Transition --- */
     .genshin-flash {
       position: fixed;
-      top: 0; 
-      left: 0;
-      width: 100vw; 
-      height: 100vh;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
       background: #ffffff;
       opacity: 0;
       pointer-events: none;
       z-index: 100;
-      transition: opacity 1.4s ease-in-out;
+      transition: opacity 1.2s ease-in-out;
     }
 
     .genshin-flash.active {
       opacity: 1;
+    }
+
+    /* --- Inner World: First Vision Canvas --- */
+    .inner-world {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: radial-gradient(circle at 50% 50%, #22083d, #0d031a, #04010a);
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 8vw;
+      opacity: 0;
+      transition: opacity 2s ease;
+    }
+
+    .inner-world.visible {
+      opacity: 1;
+    }
+
+    /* Floating Translucent Sparkly Chat Bubbles */
+    .chat-bubble {
+      max-width: 420px;
+      padding: 28px 32px;
+      background: rgba(147, 51, 234, 0.15);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(216, 180, 254, 0.4);
+      border-radius: 24px;
+      color: #f3e8ff;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      letter-spacing: 0.5px;
+      box-shadow: 0 0 30px rgba(168, 85, 247, 0.25), inset 0 0 15px rgba(192, 132, 252, 0.15);
+      position: relative;
+    }
+
+    .chat-left {
+      align-self: flex-start;
+      margin-top: 18vh;
+      animation: floatLeft 6s ease-in-out infinite alternate;
+    }
+
+    .chat-right {
+      align-self: flex-end;
+      margin-bottom: 18vh;
+      animation: floatRight 7s ease-in-out infinite alternate;
+    }
+
+    /* Sparkle shimmer overlay on bubbles */
+    .chat-bubble::before {
+      content: '';
+      position: absolute;
+      top: -2px; left: -2px; right: -2px; bottom: -2px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.4), transparent 40%, rgba(192,132,252,0.4));
+      z-index: -1;
+      opacity: 0.6;
+    }
+
+    @keyframes floatLeft {
+      0% { transform: translateY(0px) rotate(-1deg); }
+      100% { transform: translateY(-18px) rotate(1deg); }
+    }
+
+    @keyframes floatRight {
+      0% { transform: translateY(0px) rotate(1deg); }
+      100% { transform: translateY(-22px) rotate(-1deg); }
     }
   </style>
 </head>
@@ -160,21 +226,31 @@
 
   <div class="realm-wrapper">
     
-    <!-- Left & Right Gate Doors (Image Background) -->
+    <!-- Gates -->
     <div class="gate-door gate-left" id="gateLeft"></div>
     <div class="gate-door gate-right" id="gateRight"></div>
 
-    <!-- Glowing Center Seal & Button -->
+    <!-- Center Seal -->
     <div class="center-seal" id="centerSeal">
       <div class="sigil-ring"></div>
       <div class="initials">J & M</div>
-      <p class="subtitle">Enter Our Realm</p>
-      <button class="enter-btn" onclick="openGates()">Touch to Enter</button>
+      <p class="subtitle">ENTER OUR WORLD</p>
+      <button class="enter-btn" onclick="openGates()">ENTER</button>
+    </div>
+
+    <!-- Inner World: First Vision (Revealed after transition) -->
+    <div class="inner-world" id="innerWorld">
+      <div class="chat-bubble chat-left">
+        "you say i am your god but you are my religion, my one true love and life, my existence is all for you"
+      </div>
+      <div class="chat-bubble chat-right">
+        "love like mine doesnt exist. i have loved you intensely, passionately, vehemently and hungrily, always finding another way to love you because worshipping you has never been enough"
+      </div>
     </div>
 
   </div>
 
-  <!-- White Flash Overlay -->
+  <!-- Pure White Flash -->
   <div class="genshin-flash" id="genshinFlash"></div>
 
   <script>
@@ -183,28 +259,31 @@
       const gateRight = document.getElementById('gateRight');
       const centerSeal = document.getElementById('centerSeal');
       const genshinFlash = document.getElementById('genshinFlash');
+      const innerWorld = document.getElementById('innerWorld');
 
-      // 1. Shrink & fade out center seal
+      // 1. Fade out seal
       centerSeal.style.opacity = '0';
       centerSeal.style.transform = 'scale(0.7)';
       centerSeal.style.pointerEvents = 'none';
 
-      // 2. Part the doors outward
+      // 2. Open gates with immediate light bloom
       setTimeout(() => {
         gateLeft.classList.add('open-left');
         gateRight.classList.add('open-right');
-      }, 300);
+      }, 200);
 
-      // 3. Genshin Impact white light flash transition
+      // 3. Complete whiteout flash
       setTimeout(() => {
         genshinFlash.classList.add('active');
-      }, 1600);
+      }, 1400);
 
-      // 4. Action after transition completes
+      // 4. Reveal inner world vision seamlessly behind whiteout, then fade out white
       setTimeout(() => {
-        alert("Welcome to your world, J & M!");
-        // window.location.href = "vows.html"; // Redirect to your next subpage!
-      }, 3000);
+        innerWorld.classList.add('visible');
+        gateLeft.style.display = 'none';
+        gateRight.style.display = 'none';
+        genshinFlash.style.opacity = '0';
+      }, 2400);
     }
   </script>
 </body>
