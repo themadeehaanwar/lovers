@@ -66,11 +66,11 @@
 
     .sigil-ring {
       width: 240px; height: 240px;
-      border: 2px dashed rgba(216, 180, 254, 0.8);
+      border: 2px dashed rgba(241, 225, 255, 0.8);
       border-radius: 50%;
       position: absolute;
       animation: rotateSigil 25s linear infinite;
-      box-shadow: 0 0 40px rgba(168, 85, 247, 0.7), inset 0 0 20px rgba(192, 132, 252, 0.4);
+      box-shadow: 0 0 40px rgba(168, 85, 247, 0.7), inset 0 0 20px rgba(241, 225, 255, 0.4);
     }
 
     @keyframes rotateSigil {
@@ -84,7 +84,7 @@
       font-weight: 700;
       letter-spacing: 8px;
       color: #f3e8ff;
-      text-shadow: 0 0 20px rgba(192, 132, 252, 0.9), 0 0 40px rgba(168, 85, 247, 0.8);
+      text-shadow: 0 0 20px rgba(241, 225, 255, 0.9), 0 0 40px rgba(168, 85, 247, 0.8);
       margin-top: 10px;
     }
 
@@ -92,32 +92,32 @@
       font-family: 'Cinzel', serif;
       font-size: 0.85rem;
       letter-spacing: 5px;
-      color: #d8b4fe;
+      color: #f1e1ff;
       text-transform: uppercase;
       margin-top: 5px;
       margin-bottom: 22px;
-      text-shadow: 0 0 10px rgba(192, 132, 252, 0.8);
+      text-shadow: 0 0 10px rgba(241, 225, 255, 0.8);
     }
 
     .enter-btn {
       font-family: 'Cinzel', serif;
       background: rgba(15, 7, 32, 0.75);
       color: #f3e8ff;
-      border: 1px solid #c084fc;
+      border: 1px solid #f1e1ff;
       padding: 10px 34px;
       font-size: 0.95rem;
       letter-spacing: 4px;
       border-radius: 30px;
       cursor: pointer;
       backdrop-filter: blur(5px);
-      box-shadow: 0 0 25px rgba(192, 132, 252, 0.6);
+      box-shadow: 0 0 25px rgba(241, 225, 255, 0.6);
       transition: all 0.4s ease;
     }
 
     .enter-btn:hover {
-      background: rgba(192, 132, 252, 0.9);
+      background: rgba(241, 225, 255, 0.9);
       color: #0d041a;
-      box-shadow: 0 0 40px rgba(192, 132, 252, 1);
+      box-shadow: 0 0 40px rgba(241, 225, 255, 1);
       transform: scale(1.06);
     }
 
@@ -177,17 +177,17 @@
       font-weight: 500;
     }
 
-    /* Her Text (~M): Translucent White Glass, Solid White Border, Glowing Aura */
+    /* Her Text (~M): #F1E1FF Translucent Soft Purple, Glass Glow */
     .chat-left {
       align-self: flex-start;
       border-bottom-left-radius: 4px;
-      background: rgba(255, 255, 255, 0.15);
-      border: 1.5px solid #ffffff;
+      background: rgba(241, 225, 255, 0.25);
+      border: 1.5px solid #f1e1ff;
       color: #ffffff;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.2);
-      text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 0 25px rgba(241, 225, 255, 0.6), inset 0 0 15px rgba(241, 225, 255, 0.3);
+      text-shadow: 0 0 8px rgba(241, 225, 255, 0.8);
     }
 
     /* Your Text (~J): Deep Translucent Purple Glow */
@@ -213,7 +213,7 @@
 
     @keyframes purpleWhiteBreathe {
       0%, 100% { color: #c084fc; text-shadow: 0 0 10px rgba(192, 132, 252, 0.8); opacity: 0.7; }
-      50% { color: #ffffff; text-shadow: 0 0 12px rgba(255, 255, 255, 0.9); opacity: 1; }
+      50% { color: #f1e1ff; text-shadow: 0 0 12px rgba(241, 225, 255, 0.9); opacity: 1; }
     }
 
     /* --- PAGE 3: WHITEBOARD CANVAS --- */
@@ -247,7 +247,7 @@
       letter-spacing: 2.5px;
       color: #ffffff;
       background: rgba(25, 10, 45, 0.65);
-      border: 1px solid rgba(216, 180, 254, 0.7);
+      border: 1px solid rgba(241, 225, 255, 0.7);
       padding: 10px 24px;
       border-radius: 30px;
       cursor: pointer;
@@ -258,9 +258,9 @@
     }
 
     .nav-btn:hover, .nav-btn:active {
-      background: rgba(192, 132, 252, 0.9);
+      background: rgba(241, 225, 255, 0.9);
       color: #07020d;
-      box-shadow: 0 0 35px rgba(192, 132, 252, 1);
+      box-shadow: 0 0 35px rgba(241, 225, 255, 1);
       transform: scale(1.05);
     }
 
@@ -274,7 +274,7 @@
       transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);
       cursor: grab;
       background-image: 
-        radial-gradient(rgba(216, 180, 254, 0.16) 1.5px, transparent 1.5px),
+        radial-gradient(rgba(241, 225, 255, 0.16) 1.5px, transparent 1.5px),
         radial-gradient(rgba(244, 114, 182, 0.16) 1.5px, transparent 1.5px);
       background-size: 70px 70px, 140px 140px;
       background-position: 0 0, 35px 35px;
@@ -292,7 +292,7 @@
     }
 
     .orbit-line {
-      stroke: rgba(216, 180, 254, 0.4);
+      stroke: rgba(241, 225, 255, 0.4);
       stroke-width: 2;
       stroke-dasharray: 6 8;
       animation: dashMove 30s linear infinite;
@@ -322,7 +322,7 @@
       letter-spacing: 4px;
       color: #f3e8ff;
       text-transform: lowercase;
-      text-shadow: 0 0 25px rgba(192, 132, 252, 0.9), 0 0 50px rgba(168, 85, 247, 0.7);
+      text-shadow: 0 0 25px rgba(241, 225, 255, 0.9), 0 0 50px rgba(168, 85, 247, 0.7);
       margin-bottom: 12px;
     }
 
@@ -331,9 +331,9 @@
       font-size: 0.95rem;
       font-weight: 300;
       letter-spacing: 2px;
-      color: #e9d5ff;
+      color: #f1e1ff;
       line-height: 1.6;
-      text-shadow: 0 0 15px rgba(192, 132, 252, 0.8), 0 2px 4px rgba(0,0,0,0.9);
+      text-shadow: 0 0 15px rgba(241, 225, 255, 0.8), 0 2px 4px rgba(0,0,0,0.9);
     }
 
     .cloud-wrapper {
@@ -359,7 +359,7 @@
 
     .board-canvas.spotlight-active .cloud-wrapper.highlighted {
       opacity: 1 !important;
-      filter: drop-shadow(0 0 40px rgba(192, 132, 252, 0.9)) !important;
+      filter: drop-shadow(0 0 40px rgba(241, 225, 255, 0.9)) !important;
       z-index: 90 !important;
     }
 
@@ -390,19 +390,19 @@
       filter: drop-shadow(0px 0px 25px rgba(168, 85, 247, 0.7));
     }
     .cloud-purple .cloud-text { color: #f3e8ff; text-shadow: 0 0 10px rgba(192, 132, 252, 0.8); }
-    .cloud-purple .cloud-song { color: #e9d5ff; background: rgba(192, 132, 252, 0.25); border: 1px solid rgba(216, 180, 254, 0.4); }
-    .cloud-purple .cloud-initial { color: #d8b4fe; }
+    .cloud-purple .cloud-song { color: #f1e1ff; background: rgba(192, 132, 252, 0.25); border: 1px solid rgba(241, 225, 255, 0.4); }
+    .cloud-purple .cloud-initial { color: #f1e1ff; }
 
-    /* Her Clouds (~M): Inverted Angelic White */
-    .cloud-white .cloud-svg-bg path {
-      fill: url(#whiteCloudGrad);
-      stroke: #ffffff;
+    /* Her Clouds (~M): Light Purple Tint (#F1E1FF) */
+    .cloud-softpurple .cloud-svg-bg path {
+      fill: url(#softPurpleCloudGrad);
+      stroke: #f1e1ff;
       stroke-width: 2.5;
-      filter: drop-shadow(0px 0px 30px rgba(255, 255, 255, 0.8));
+      filter: drop-shadow(0px 0px 30px rgba(241, 225, 255, 0.75));
     }
-    .cloud-white .cloud-text { color: #240838; font-weight: 600; }
-    .cloud-white .cloud-song { color: #3b0764; background: rgba(192, 132, 252, 0.2); border: 1px solid rgba(147, 51, 234, 0.3); font-weight: 600; }
-    .cloud-white .cloud-initial { color: #581c87; font-weight: 700; }
+    .cloud-softpurple .cloud-text { color: #240838; font-weight: 600; }
+    .cloud-softpurple .cloud-song { color: #3b0764; background: rgba(241, 225, 255, 0.45); border: 1px solid rgba(147, 51, 234, 0.3); font-weight: 600; }
+    .cloud-softpurple .cloud-initial { color: #581c87; font-weight: 700; }
 
     .cloud-text {
       font-size: 0.95rem;
@@ -451,7 +451,7 @@
       letter-spacing: 3px;
       color: #f3e8ff;
       background: rgba(25, 12, 42, 0.85);
-      border: 1px solid #c084fc;
+      border: 1px solid #f1e1ff;
       padding: 12px 28px;
       border-radius: 30px;
       cursor: pointer;
@@ -464,9 +464,9 @@
     }
 
     .next-nav-btn:hover, .next-nav-btn:active {
-      background: rgba(192, 132, 252, 0.9);
+      background: rgba(241, 225, 255, 0.9);
       color: #07020d;
-      box-shadow: 0 0 35px rgba(192, 132, 252, 0.9);
+      box-shadow: 0 0 35px rgba(241, 225, 255, 0.9);
       transform: scale(1.05);
     }
 
@@ -475,7 +475,9 @@
       position: absolute;
       top: 0; left: 0;
       width: 100vw; height: 100dvh;
-      background: radial-gradient(circle at center, #130624 0%, #050109 100%);
+      background-image: linear-gradient(rgba(5, 1, 9, 0.45), rgba(5, 1, 9, 0.45)), url('https://lh3.googleusercontent.com/d/1I9zi4uTnHFtMQpG3I1U8KLnRl7QTKF-Q');
+      background-size: cover;
+      background-position: center;
       z-index: 150;
       display: flex;
       flex-direction: column;
@@ -483,6 +485,8 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.8s ease;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
     }
 
     .scroll-page.visible {
@@ -494,9 +498,10 @@
       width: 100%;
       text-align: center;
       padding: 22px 15px 12px 15px;
-      background: rgba(10, 3, 20, 0.85);
+      background: rgba(10, 3, 20, 0.75);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(216, 180, 254, 0.25);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(241, 225, 255, 0.25);
       z-index: 20;
     }
 
@@ -506,7 +511,7 @@
       font-weight: 700;
       letter-spacing: 3px;
       color: #f3e8ff;
-      text-shadow: 0 0 15px rgba(192, 132, 252, 0.8);
+      text-shadow: 0 0 15px rgba(241, 225, 255, 0.8);
       margin-bottom: 10px;
     }
 
@@ -520,7 +525,7 @@
     .speed-label {
       font-size: 0.75rem;
       letter-spacing: 1.5px;
-      color: #d8b4fe;
+      color: #f1e1ff;
       text-transform: uppercase;
       margin-right: 4px;
     }
@@ -529,9 +534,9 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 0.75rem;
       font-weight: 600;
-      color: #e9d5ff;
+      color: #f1e1ff;
       background: rgba(40, 15, 65, 0.6);
-      border: 1px solid rgba(192, 132, 252, 0.4);
+      border: 1px solid rgba(241, 225, 255, 0.4);
       padding: 4px 12px;
       border-radius: 15px;
       cursor: pointer;
@@ -539,9 +544,9 @@
     }
 
     .speed-btn.active, .speed-btn:hover {
-      background: #c084fc;
+      background: #f1e1ff;
       color: #07020d;
-      box-shadow: 0 0 12px rgba(192, 132, 252, 0.8);
+      box-shadow: 0 0 12px rgba(241, 225, 255, 0.8);
     }
 
     /* Single Chat Stream Container */
@@ -551,7 +556,7 @@
       max-width: 700px;
       flex: 1;
       overflow: hidden;
-      padding: 0 20px;
+      padding: 0 20px 70px 20px;
     }
 
     .chat-stream-viewport:hover .chat-scroll-belt,
@@ -592,20 +597,82 @@
       background: rgba(25, 10, 45, 0.88);
       border: 1px solid rgba(192, 132, 252, 0.8);
       color: #f3e8ff;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       box-shadow: 0 0 22px rgba(168, 85, 247, 0.5);
     }
 
-    /* Her Bubble (~M): Left Side, Frosted Glass White Glow */
+    /* Her Bubble (~M): Left Side, #F1E1FF Soft Light Purple Glow */
     .bubble-m {
       align-self: flex-start;
       border-bottom-left-radius: 4px;
-      background: rgba(255, 255, 255, 0.15);
-      border: 1.5px solid #ffffff;
+      background: rgba(241, 225, 255, 0.22);
+      border: 1.5px solid #f1e1ff;
       color: #ffffff;
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.2);
-      text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+      box-shadow: 0 0 25px rgba(241, 225, 255, 0.5), inset 0 0 10px rgba(241, 225, 255, 0.2);
+      text-shadow: 0 0 8px rgba(241, 225, 255, 0.8);
+    }
+
+    /* Bottom Fake Chat Bar */
+    .chat-input-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 14px 20px;
+      background: rgba(12, 4, 25, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid rgba(241, 225, 255, 0.25);
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .chat-input-wrapper {
+      width: 100%;
+      max-width: 680px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(25, 10, 45, 0.7);
+      border: 1px solid rgba(241, 225, 255, 0.4);
+      border-radius: 28px;
+      padding: 6px 8px 6px 20px;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.5), 0 0 15px rgba(168, 85, 247, 0.2);
+    }
+
+    .chat-placeholder {
+      flex: 1;
+      font-size: 0.9rem;
+      color: rgba(241, 225, 255, 0.6);
+      letter-spacing: 0.5px;
+      user-select: none;
+    }
+
+    .chat-send-btn {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: #07020d;
+      background: #f1e1ff;
+      border: none;
+      padding: 8px 22px;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(241, 225, 255, 0.8);
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .chat-send-btn:hover {
+      background: #ffffff;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 1);
+      transform: scale(1.04);
     }
 
     @media (max-width: 600px) {
@@ -618,8 +685,11 @@
       .nav-btn { font-size: 0.72rem; padding: 8px 16px; }
       .header-title { font-size: 1.15rem; }
       .stream-bubble { font-size: 0.88rem; padding: 12px 16px; max-width: 85%; }
-      .chat-stream-viewport { padding: 0 12px; }
+      .chat-stream-viewport { padding: 0 12px 65px 12px; }
       .chat-scroll-belt { width: calc(100% - 24px); left: 12px; }
+      .chat-input-bar { padding: 10px 14px; }
+      .chat-placeholder { font-size: 0.82rem; }
+      .chat-send-btn { font-size: 0.75rem; padding: 7px 16px; }
     }
   </style>
 </head>
@@ -635,11 +705,11 @@
         <stop offset="100%" stop-color="#0d041a" stop-opacity="0.95" />
       </linearGradient>
 
-      <!-- Inverted Angelic White Gradient -->
-      <linearGradient id="whiteCloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.98" />
-        <stop offset="60%" stop-color="#f5f3ff" stop-opacity="0.96" />
-        <stop offset="100%" stop-color="#ede9fe" stop-opacity="0.98" />
+      <!-- Soft Light Purple Gradient (#F1E1FF Tint) -->
+      <linearGradient id="softPurpleCloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#f1e1ff" stop-opacity="0.98" />
+        <stop offset="60%" stop-color="#e9d5ff" stop-opacity="0.96" />
+        <stop offset="100%" stop-color="#d8b4fe" stop-opacity="0.98" />
       </linearGradient>
     </defs>
   </svg>
@@ -667,7 +737,7 @@
     <div class="inner-world" id="innerWorld" onclick="transitionToBoard()">
       <div></div>
       <div class="chat-container">
-        <!-- Her Text (~M): Left Side, Frosted Glass White Glow -->
+        <!-- Her Text (~M): Left Side, #F1E1FF Soft Purple Glow -->
         <div class="chat-bubble chat-left">
           "You say I am your god but you are my religion, my one true love and life, my existence is all for you"
         </div>
@@ -697,8 +767,8 @@
           <p class="main-playlist-subtitle">lyrics we wish we wrote ourselves<br>but found in music that we share</p>
         </div>
 
-        <!-- Cloud 1: ~M (Duniyaa) - Inverted Angelic White -->
-        <div class="cloud-wrapper cloud-white" id="cloud-1" style="top: 1320px; left: 1220px; width: 420px; animation-delay: 0s;">
+        <!-- Cloud 1: ~M (Duniyaa) - Soft Light Purple -->
+        <div class="cloud-wrapper cloud-softpurple" id="cloud-1" style="top: 1320px; left: 1220px; width: 420px; animation-delay: 0s;">
           <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
             <path d="M 60 160 C 20 160 10 120 40 90 C 20 50 70 20 120 40 C 160 10 240 10 280 40 C 330 10 380 50 360 100 C 390 130 380 180 340 180 C 320 220 250 230 200 200 C 150 230 80 220 60 160 Z" />
           </svg>
@@ -735,8 +805,8 @@ Phulo si aae khushbu</div>
           </div>
         </div>
 
-        <!-- Cloud 4: ~M (Maula Mere Maula) - Inverted Angelic White -->
-        <div class="cloud-wrapper cloud-white" id="cloud-4" style="top: 1720px; left: 1650px; width: 410px; animation-delay: -3.5s;">
+        <!-- Cloud 4: ~M (Maula Mere Maula) - Soft Light Purple -->
+        <div class="cloud-wrapper cloud-softpurple" id="cloud-4" style="top: 1720px; left: 1650px; width: 410px; animation-delay: -3.5s;">
           <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
             <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" />
           </svg>
@@ -767,8 +837,8 @@ She's an* angel, and* she is my religion</div>
           </div>
         </div>
 
-        <!-- Cloud 6: ~M (Stay Gold) - Inverted Angelic White -->
-        <div class="cloud-wrapper cloud-white" id="cloud-6" style="top: 1980px; left: 1390px; width: 420px; animation-delay: -1.5s;">
+        <!-- Cloud 6: ~M (Stay Gold) - Soft Light Purple -->
+        <div class="cloud-wrapper cloud-softpurple" id="cloud-6" style="top: 1980px; left: 1390px; width: 420px; animation-delay: -1.5s;">
           <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
             <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" />
           </svg>
@@ -797,8 +867,8 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
           </div>
         </div>
 
-        <!-- Cloud 8: ~M (Aakhon Se Batana) - Inverted Angelic White -->
-        <div class="cloud-wrapper cloud-white" id="cloud-8" style="top: 1510px; left: 1880px; width: 400px; animation-delay: -0.5s;">
+        <!-- Cloud 8: ~M (Aakhon Se Batana) - Soft Light Purple -->
+        <div class="cloud-wrapper cloud-softpurple" id="cloud-8" style="top: 1510px; left: 1880px; width: 400px; animation-delay: -0.5s;">
           <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
             <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" />
           </svg>
@@ -830,6 +900,14 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
 
       <div class="chat-stream-viewport">
         <div class="chat-scroll-belt" id="chatScrollBelt"></div>
+      </div>
+
+      <!-- Interactive Chat Input Bar -->
+      <div class="chat-input-bar">
+        <div class="chat-input-wrapper">
+          <div class="chat-placeholder" id="chatPlaceholder">Type your message...</div>
+          <button class="chat-send-btn" id="chatSendBtn" onclick="handleSendClick()">Send</button>
+        </div>
       </div>
     </div>
 
@@ -1088,7 +1166,6 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
 
     /* --- PAGE 4: AUTHENTIC DATA & CHAT STREAM --- */
     
-    // Her exact statements about what she loves about you (~M) -> Left side, White Glowing
     const herListForYou = [
       "your eyes",
       "your smile",
@@ -1118,7 +1195,6 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
       "your eyelashes"
     ];
 
-    // Your exact statements about what you love about her (~J) -> Right side, Purple
     const yourListForHer = [
       "your eyes, your deep ocean eyes",
       "your beautiful smile",
@@ -1140,28 +1216,22 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
 
       const chatScrollBelt = document.getElementById('chatScrollBelt');
 
-      // Interleave items with individual array modulo so lists loop seamlessly even with imbalanced lengths
       const maxLength = Math.max(yourListForHer.length, herListForYou.length);
       const interleaved = [];
 
       for (let i = 0; i < maxLength; i++) {
-        // Her item on the Left (~M)
         interleaved.push({ sender: 'M', text: herListForYou[i % herListForYou.length] });
-        // Your item on the Right (~J)
         interleaved.push({ sender: 'J', text: yourListForHer[i % yourListForHer.length] });
       }
 
-      // Convert array into chat message bubbles
       const singleSetHTML = interleaved.map(item => {
         const bubbleClass = item.sender === 'J' ? 'bubble-j' : 'bubble-m';
         return `<div class="stream-bubble ${bubbleClass}">${item.text}</div>`;
       }).join('');
 
-      // Repeat sequence 4x for a smooth infinite animation belt
       chatScrollBelt.innerHTML = singleSetHTML + singleSetHTML + singleSetHTML + singleSetHTML;
     }
 
-    // Default scroll pace duration
     const BASE_STREAM_DURATION = 90;
 
     function setScrollSpeed(speed) {
@@ -1171,6 +1241,21 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
       document.querySelectorAll('.speed-btn').forEach(btn => {
         btn.classList.toggle('active', parseFloat(btn.dataset.speed) === speed);
       });
+    }
+
+    let isSentState = false;
+
+    function handleSendClick() {
+      const placeholder = document.getElementById('chatPlaceholder');
+      const sendBtn = document.getElementById('chatSendBtn');
+
+      if (!isSentState) {
+        placeholder.textContent = "Next";
+        sendBtn.textContent = "Next";
+        isSentState = true;
+      } else {
+        alert("End of current section!");
+      }
     }
   </script>
 </body>
