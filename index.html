@@ -171,20 +171,31 @@
       position: relative;
       max-width: 82%;
       padding: 18px 22px;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(216, 180, 254, 0.8);
-      color: #2a0845;
       font-size: 1rem;
       line-height: 1.6;
       border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(192, 132, 252, 0.4);
       font-weight: 500;
     }
 
-    .chat-left { align-self: flex-start; border-bottom-left-radius: 4px; }
-    .chat-right { align-self: flex-end; background: #ffffff; border-bottom-right-radius: 4px; }
+    /* Your Text: Deep Purple Fantastical Glow */
+    .chat-left {
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      background: rgba(25, 10, 45, 0.85);
+      border: 1px solid rgba(192, 132, 252, 0.8);
+      color: #f3e8ff;
+      box-shadow: 0 0 25px rgba(168, 85, 247, 0.5), inset 0 0 15px rgba(192, 132, 252, 0.2);
+    }
+
+    /* Her Text: Angelic White Glow */
+    .chat-right {
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 1);
+      color: #2a0845;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 15px rgba(216, 180, 254, 0.6);
+    }
 
     .tap-continue {
       font-family: 'Montserrat', sans-serif;
@@ -343,7 +354,7 @@
 
     .board-canvas.spotlight-active .cloud-wrapper.highlighted {
       opacity: 1 !important;
-      filter: drop-shadow(0 0 40px #ffffff) drop-shadow(0 0 20px #c084fc) !important;
+      filter: drop-shadow(0 0 40px rgba(192, 132, 252, 0.9)) !important;
       z-index: 90 !important;
     }
 
@@ -366,27 +377,38 @@
       align-items: center;
     }
 
-    /* Soft White Cloud Styling with Dark Purple Text */
-    .cloud-wrapper .cloud-svg-bg path {
-      fill: url(#whiteCloudGrad);
-      stroke: #d8b4fe;
-      stroke-width: 3.5;
-      filter: drop-shadow(0px 0px 20px rgba(192, 132, 252, 0.5));
+    /* Your Clouds (~J): Original Fantastical Purple */
+    .cloud-purple .cloud-svg-bg path {
+      fill: url(#purpleCloudGrad);
+      stroke: #c084fc;
+      stroke-width: 2.5;
+      filter: drop-shadow(0px 0px 25px rgba(168, 85, 247, 0.7));
     }
+    .cloud-purple .cloud-text { color: #f3e8ff; text-shadow: 0 0 10px rgba(192, 132, 252, 0.8); }
+    .cloud-purple .cloud-song { color: #e9d5ff; background: rgba(192, 132, 252, 0.25); border: 1px solid rgba(216, 180, 254, 0.4); }
+    .cloud-purple .cloud-initial { color: #d8b4fe; }
+
+    /* Her Clouds (~M): Inverted Angelic White */
+    .cloud-white .cloud-svg-bg path {
+      fill: url(#whiteCloudGrad);
+      stroke: #ffffff;
+      stroke-width: 2.5;
+      filter: drop-shadow(0px 0px 30px rgba(255, 255, 255, 0.8));
+    }
+    .cloud-white .cloud-text { color: #240838; font-weight: 600; }
+    .cloud-white .cloud-song { color: #3b0764; background: rgba(192, 132, 252, 0.2); border: 1px solid rgba(147, 51, 234, 0.3); font-weight: 600; }
+    .cloud-white .cloud-initial { color: #581c87; font-weight: 700; }
 
     .cloud-text {
       font-size: 0.95rem;
-      color: #240838;
       line-height: 1.6;
       white-space: pre-line;
       margin-bottom: 8px;
-      font-weight: 600;
     }
 
     .cloud-song {
       font-style: italic;
       font-size: 0.8rem;
-      color: #3b0764;
       letter-spacing: 0.8px;
       margin-bottom: 6px;
       display: inline-flex;
@@ -395,26 +417,18 @@
       cursor: pointer;
       padding: 4px 12px;
       border-radius: 12px;
-      background: rgba(192, 132, 252, 0.2);
-      border: 1px solid rgba(147, 51, 234, 0.3);
       transition: all 0.2s ease;
-      font-weight: 600;
     }
 
     .cloud-song:hover {
-      background: rgba(192, 132, 252, 0.4);
       transform: scale(1.05);
     }
-
-    .play-icon { font-size: 0.7rem; color: #7e22ce; }
 
     .cloud-initial {
       font-family: 'Cinzel', serif;
       font-size: 1rem;
-      font-weight: 700;
       letter-spacing: 2px;
       margin-top: 4px;
-      color: #581c87;
     }
 
     @keyframes floatCloud {
@@ -451,7 +465,7 @@
       transform: scale(1.05);
     }
 
-    /* --- PAGE 4: THINGS WE LOVE ABOUT EACH OTHER --- */
+    /* --- PAGE 4: SCROLLING CHAT INTERFACE --- */
     .scroll-page {
       position: absolute;
       top: 0; left: 0;
@@ -474,29 +488,28 @@
     .page-header {
       width: 100%;
       text-align: center;
-      padding: 24px 15px 12px 15px;
-      background: rgba(10, 3, 20, 0.8);
-      backdrop-filter: blur(10px);
+      padding: 22px 15px 12px 15px;
+      background: rgba(10, 3, 20, 0.85);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(216, 180, 254, 0.25);
       z-index: 20;
     }
 
     .header-title {
       font-family: 'Cinzel', serif;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 700;
       letter-spacing: 3px;
       color: #f3e8ff;
       text-shadow: 0 0 15px rgba(192, 132, 252, 0.8);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
-    /* Speed Control Multipliers Bar */
     .speed-bar {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .speed-label {
@@ -526,78 +539,65 @@
       box-shadow: 0 0 12px rgba(192, 132, 252, 0.8);
     }
 
-    .columns-container {
+    /* Single Chat Stream Container */
+    .chat-stream-viewport {
       position: relative;
       width: 100%;
+      max-width: 650px;
       flex: 1;
-      display: flex;
       overflow: hidden;
+      padding: 0 20px;
     }
 
-    /* Middle Screen Divider */
-    .columns-container::after {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0; left: 50%;
-      width: 1px;
-      background: linear-gradient(to bottom, transparent, rgba(216, 180, 254, 0.4), transparent);
-      z-index: 10;
+    .chat-stream-viewport:hover .chat-scroll-belt,
+    .chat-stream-viewport:active .chat-scroll-belt {
+      animation-play-state: paused !important;
     }
 
-    .column-half {
-      width: 50%;
-      height: 100%;
-      overflow: hidden;
-      position: relative;
-      padding: 0 15px;
-    }
-
-    .scroll-belt {
+    .chat-scroll-belt {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
       position: absolute;
-      width: calc(100% - 30px);
-      left: 15px;
+      width: calc(100% - 40px);
+      left: 20px;
       will-change: transform;
+      animation: streamScroll 90s linear infinite;
     }
 
-    /* Column Animations */
-    .belt-down {
-      animation: scrollDown 45s linear infinite;
-    }
-
-    .belt-up {
-      animation: scrollUp 45s linear infinite;
-    }
-
-    @keyframes scrollDown {
-      0% { transform: translateY(-50%); }
-      100% { transform: translateY(0%); }
-    }
-
-    @keyframes scrollUp {
+    @keyframes streamScroll {
       0% { transform: translateY(0%); }
       100% { transform: translateY(-50%); }
     }
 
-    /* Touch & Hover to Pause Belt Movement */
-    .column-half:hover .scroll-belt,
-    .column-half:active .scroll-belt {
-      animation-play-state: paused !important;
-    }
-
-    .love-bubble {
-      background: #ffffff;
-      color: #2a0845;
-      padding: 16px 20px;
+    .stream-bubble {
+      max-width: 85%;
+      padding: 14px 20px;
       border-radius: 18px;
       font-size: 0.95rem;
       line-height: 1.5;
       font-weight: 500;
-      border: 1px solid rgba(192, 132, 252, 0.5);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       word-break: break-word;
+    }
+
+    /* Your Bubble (~J): Deep Purple Glow */
+    .bubble-j {
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      background: rgba(25, 10, 45, 0.9);
+      border: 1px solid rgba(192, 132, 252, 0.8);
+      color: #f3e8ff;
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+    }
+
+    /* Her Bubble (~M): Angelic White Glow */
+    .bubble-m {
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 1);
+      color: #2a0845;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.8), 0 0 12px rgba(216, 180, 254, 0.6);
     }
 
     @media (max-width: 600px) {
@@ -609,22 +609,25 @@
       .controls-bar { top: 20px; }
       .nav-btn { font-size: 0.72rem; padding: 8px 16px; }
       .header-title { font-size: 1.15rem; }
-      .love-bubble { font-size: 0.85rem; padding: 12px 15px; }
-      .column-half { padding: 0 8px; }
-      .scroll-belt { width: calc(100% - 16px); left: 8px; }
+      .stream-bubble { font-size: 0.88rem; padding: 12px 16px; }
+      .chat-stream-viewport { padding: 0 12px; }
+      .chat-scroll-belt { width: calc(100% - 24px); left: 12px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- GLOBAL SVG GRADIENTS & STRIPE PATTERNS -->
+  <!-- GLOBAL SVG GRADIENTS -->
   <svg style="height: 0; width: 0; position: absolute;" aria-hidden="true">
     <defs>
-      <pattern id="cloudStripes" width="20" height="20" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
-        <line x1="0" y1="0" x2="0" y2="20" stroke="rgba(147, 51, 234, 0.06)" stroke-width="4" />
-      </pattern>
+      <!-- Original Fantastical Purple Gradient -->
+      <linearGradient id="purpleCloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#2d124d" stop-opacity="0.95" />
+        <stop offset="50%" stop-color="#1a0832" stop-opacity="0.92" />
+        <stop offset="100%" stop-color="#0d041a" stop-opacity="0.95" />
+      </linearGradient>
 
-      <!-- Soft White Cloud Gradient -->
+      <!-- Inverted Angelic White Gradient -->
       <linearGradient id="whiteCloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stop-color="#ffffff" stop-opacity="0.98" />
         <stop offset="60%" stop-color="#f5f3ff" stop-opacity="0.96" />
@@ -656,9 +659,11 @@
     <div class="inner-world" id="innerWorld" onclick="transitionToBoard()">
       <div></div>
       <div class="chat-container">
+        <!-- Your Text: Deep Purple Glow -->
         <div class="chat-bubble chat-left">
           "You say I am your god but you are my religion, my one true love and life, my existence is all for you"
         </div>
+        <!-- Her Text: Angelic White Glow -->
         <div class="chat-bubble chat-right">
           "love like mine doesnt exist. i have loved you intensely, passionately, vehemently and hungrily, always finding another way to love you because worshipping you has never been enough"
         </div>
@@ -684,11 +689,10 @@
           <p class="main-playlist-subtitle">lyrics we wish we wrote ourselves<br>but found in music that we share</p>
         </div>
 
-        <!-- Cloud 1: ~M (Duniyaa) -->
-        <div class="cloud-wrapper" id="cloud-1" style="top: 1320px; left: 1220px; width: 420px; animation-delay: 0s;">
+        <!-- Cloud 1: ~M (Duniyaa) - Inverted Angelic White -->
+        <div class="cloud-wrapper cloud-white" id="cloud-1" style="top: 1320px; left: 1220px; width: 420px; animation-delay: 0s;">
           <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
             <path d="M 60 160 C 20 160 10 120 40 90 C 20 50 70 20 120 40 C 160 10 240 10 280 40 C 330 10 380 50 360 100 C 390 130 380 180 340 180 C 320 220 250 230 200 200 C 150 230 80 220 60 160 Z" />
-            <path d="M 60 160 C 20 160 10 120 40 90 C 20 50 70 20 120 40 C 160 10 240 10 280 40 C 330 10 380 50 360 100 C 390 130 380 180 340 180 C 320 220 250 230 200 200 C 150 230 80 220 60 160 Z" fill="url(#cloudStripes)" />
           </svg>
           <div class="cloud-content">
             <div class="cloud-text">bulaave tujhe yaar ajj meri galiyaa, basaau tere sang main alag duniya, na aae kabhi dono mein zara bhi faasle, bas ek tu ho ek mai hoon aur koi na</div>
@@ -697,11 +701,10 @@
           </div>
         </div>
 
-        <!-- Cloud 2: ~J (Duniyaa) -->
-        <div class="cloud-wrapper" id="cloud-2" style="top: 1300px; left: 1620px; width: 420px; animation-delay: -2s;">
+        <!-- Cloud 2: ~J (Duniyaa) - Fantastical Purple -->
+        <div class="cloud-wrapper cloud-purple" id="cloud-2" style="top: 1300px; left: 1620px; width: 420px; animation-delay: -2s;">
           <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
             <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" />
-            <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" fill="url(#cloudStripes)" />
           </svg>
           <div class="cloud-content">
             <div class="cloud-text">Tujhse mili to seekha maine hansna, aaya mujhe safar mein thheherna, main to bhool gayi duniya ka pata yaar jab se tujhe hai jaana</div>
@@ -710,11 +713,10 @@
           </div>
         </div>
 
-        <!-- Cloud 3: ~J (Maula Mere Maula) -->
-        <div class="cloud-wrapper" id="cloud-3" style="top: 1720px; left: 1200px; width: 400px; animation-delay: -1s;">
+        <!-- Cloud 3: ~J (Maula Mere Maula) - Fantastical Purple -->
+        <div class="cloud-wrapper cloud-purple" id="cloud-3" style="top: 1720px; left: 1200px; width: 400px; animation-delay: -1s;">
           <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
             <path d="M 60 160 C 20 160 10 120 40 90 C 20 50 70 20 120 40 C 160 10 240 10 280 40 C 330 10 380 50 360 100 C 390 130 380 180 340 180 C 320 220 250 230 200 200 C 150 230 80 220 60 160 Z" />
-            <path d="M 60 160 C 20 160 10 120 40 90 C 20 50 70 20 120 40 C 160 10 240 10 280 40 C 330 10 380 50 360 100 C 390 130 380 180 340 180 C 320 220 250 230 200 200 C 150 230 80 220 60 160 Z" fill="url(#cloudStripes)" />
           </svg>
           <div class="cloud-content">
             <div class="cloud-text">Baatein teri itni haseen
@@ -725,11 +727,10 @@ Phulo si aae khushbu</div>
           </div>
         </div>
 
-        <!-- Cloud 4: ~M (Maula Mere Maula) -->
-        <div class="cloud-wrapper" id="cloud-4" style="top: 1720px; left: 1650px; width: 410px; animation-delay: -3.5s;">
+        <!-- Cloud 4: ~M (Maula Mere Maula) - Inverted Angelic White -->
+        <div class="cloud-wrapper cloud-white" id="cloud-4" style="top: 1720px; left: 1650px; width: 410px; animation-delay: -3.5s;">
           <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
             <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" />
-            <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" fill="url(#cloudStripes)" />
           </svg>
           <div class="cloud-content">
             <div class="cloud-text">rakh lu chhupa ke, main kahi tujhko
@@ -741,11 +742,10 @@ saath tere, main hi rahu</div>
           </div>
         </div>
 
-        <!-- Cloud 5: ~J (She's My Religion) -->
-        <div class="cloud-wrapper" id="cloud-5" style="top: 1080px; left: 1380px; width: 440px; animation-delay: -4s;">
+        <!-- Cloud 5: ~J (She's My Religion) - Fantastical Purple -->
+        <div class="cloud-wrapper cloud-purple" id="cloud-5" style="top: 1080px; left: 1380px; width: 440px; animation-delay: -4s;">
           <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
             <path d="M 60 160 C 20 160 10 120 40 90 C 20 50 70 20 120 40 C 160 10 240 10 280 40 C 330 10 380 50 360 100 C 390 130 380 180 340 180 C 320 220 250 230 200 200 C 150 230 80 220 60 160 Z" />
-            <path d="M 60 160 C 20 160 10 120 40 90 C 20 50 70 20 120 40 C 160 10 240 10 280 40 C 330 10 380 50 360 100 C 390 130 380 180 340 180 C 320 220 250 230 200 200 C 150 230 80 220 60 160 Z" fill="url(#cloudStripes)" />
           </svg>
           <div class="cloud-content">
             <div class="cloud-text">She's gold*, she's dark, she's cynical
@@ -759,11 +759,10 @@ She's an* angel, and* she is my religion</div>
           </div>
         </div>
 
-        <!-- Cloud 6: ~M (Stay Gold) -->
-        <div class="cloud-wrapper" id="cloud-6" style="top: 1980px; left: 1390px; width: 420px; animation-delay: -1.5s;">
+        <!-- Cloud 6: ~M (Stay Gold) - Inverted Angelic White -->
+        <div class="cloud-wrapper cloud-white" id="cloud-6" style="top: 1980px; left: 1390px; width: 420px; animation-delay: -1.5s;">
           <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
             <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" />
-            <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" fill="url(#cloudStripes)" />
           </svg>
           <div class="cloud-content">
             <div class="cloud-text">Wish I could keep you in amber
@@ -777,11 +776,10 @@ Hope that you'll always stay gold</div>
           </div>
         </div>
 
-        <!-- Cloud 7: ~J (Aakhon Se Batana) -->
-        <div class="cloud-wrapper" id="cloud-7" style="top: 1510px; left: 980px; width: 400px; animation-delay: -2.8s;">
+        <!-- Cloud 7: ~J (Aakhon Se Batana) - Fantastical Purple -->
+        <div class="cloud-wrapper cloud-purple" id="cloud-7" style="top: 1510px; left: 980px; width: 400px; animation-delay: -2.8s;">
           <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
             <path d="M 60 160 C 20 160 10 120 40 90 C 20 50 70 20 120 40 C 160 10 240 10 280 40 C 330 10 380 50 360 100 C 390 130 380 180 340 180 C 320 220 250 230 200 200 C 150 230 80 220 60 160 Z" />
-            <path d="M 60 160 C 20 160 10 120 40 90 C 20 50 70 20 120 40 C 160 10 240 10 280 40 C 330 10 380 50 360 100 C 390 130 380 180 340 180 C 320 220 250 230 200 200 C 150 230 80 220 60 160 Z" fill="url(#cloudStripes)" />
           </svg>
           <div class="cloud-content">
             <div class="cloud-text">Ham khaamoshi padh lеnge agar chup tum raho
@@ -791,11 +789,10 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
           </div>
         </div>
 
-        <!-- Cloud 8: ~M (Aakhon Se Batana) -->
-        <div class="cloud-wrapper" id="cloud-8" style="top: 1510px; left: 1880px; width: 400px; animation-delay: -0.5s;">
+        <!-- Cloud 8: ~M (Aakhon Se Batana) - Inverted Angelic White -->
+        <div class="cloud-wrapper cloud-white" id="cloud-8" style="top: 1510px; left: 1880px; width: 400px; animation-delay: -0.5s;">
           <svg class="cloud-svg-bg" viewBox="0 0 400 240" preserveAspectRatio="none">
             <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" />
-            <path d="M 50 150 C 10 140 15 90 45 70 C 30 30 90 10 140 30 C 180 0 250 10 290 40 C 340 20 385 60 370 110 C 395 150 360 200 320 195 C 280 225 210 220 170 200 C 120 225 65 200 50 150 Z" fill="url(#cloudStripes)" />
           </svg>
           <div class="cloud-content">
             <div class="cloud-text">"tum haath thaam lena, hum savar jaayenge"</div>
@@ -823,16 +820,8 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
         </div>
       </div>
 
-      <div class="columns-container">
-        <!-- Left Side: Her List (Top to Bottom) -->
-        <div class="column-half">
-          <div class="scroll-belt belt-down" id="leftBelt"></div>
-        </div>
-
-        <!-- Right Side: Your List (Bottom to Top) -->
-        <div class="column-half">
-          <div class="scroll-belt belt-up" id="rightBelt"></div>
-        </div>
+      <div class="chat-stream-viewport">
+        <div class="chat-scroll-belt" id="chatScrollBelt"></div>
       </div>
     </div>
 
@@ -903,7 +892,7 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
       setTimeout(() => {
         boardViewport.classList.remove('visible');
         scrollPage.classList.add('visible');
-        initLoveLists();
+        initChatStream();
       }, 600);
     }
 
@@ -922,7 +911,7 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
       }
     }
 
-    /* Board Engine */
+    /* Board Canvas Engine */
     const viewport = document.getElementById('boardViewport');
     const canvas = document.getElementById('boardCanvas');
     const clouds = Array.from(document.querySelectorAll('.cloud-wrapper'));
@@ -1106,7 +1095,9 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
       drawConstellations();
     });
 
-    /* --- PAGE 4: LIST DATA & INFINITE LOOP ENGINE --- */
+    /* --- PAGE 4: AUTHENTIC DATA & CHAT STREAM --- */
+    
+    // Her exact statements about what she loves about you (~J)
     const herListForYou = [
       "your eyes",
       "your smile",
@@ -1136,6 +1127,7 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
       "your eyelashes"
     ];
 
+    // Your exact statements about what you love about her (~M)
     const yourListForHer = [
       "your eyes, your deep ocean eyes",
       "your beautiful smile",
@@ -1149,32 +1141,43 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
       "how warm and easygoing you are"
     ];
 
-    let listsInitialized = false;
+    let chatStreamInitialized = false;
 
-    function initLoveLists() {
-      if (listsInitialized) return;
-      listsInitialized = true;
+    function initChatStream() {
+      if (chatStreamInitialized) return;
+      chatStreamInitialized = true;
 
-      const leftBelt = document.getElementById('leftBelt');
-      const rightBelt = document.getElementById('rightBelt');
+      const chatScrollBelt = document.getElementById('chatScrollBelt');
 
-      // Helper to generate bubble nodes
-      const buildNodes = (array) => array.map(text => `<div class="love-bubble">${text}</div>`).join('');
+      // Interleave items sequentially (Your turn -> Her turn -> Your turn)
+      const interleaved = [];
+      const maxLength = Math.max(yourListForHer.length, herListForYou.length);
 
-      // Programmatically repeat sequence 4x to establish infinite seamless loop
-      const leftHTML = buildNodes(herListForYou);
-      const rightHTML = buildNodes(yourListForHer);
+      for (let i = 0; i < maxLength; i++) {
+        if (i < yourListForHer.length) {
+          interleaved.push({ sender: 'J', text: yourListForHer[i] });
+        }
+        if (i < herListForYou.length) {
+          interleaved.push({ sender: 'M', text: herListForYou[i] });
+        }
+      }
 
-      leftBelt.innerHTML = leftHTML + leftHTML + leftHTML + leftHTML;
-      rightBelt.innerHTML = rightHTML + rightHTML + rightHTML + rightHTML + rightHTML + rightHTML;
+      // Convert array into chat message bubbles
+      const singleSetHTML = interleaved.map(item => {
+        const bubbleClass = item.sender === 'J' ? 'bubble-j' : 'bubble-m';
+        return `<div class="stream-bubble ${bubbleClass}">${item.text}</div>`;
+      }).join('');
+
+      // Programmatically repeat sequence 4x to form a seamless infinite loop
+      chatScrollBelt.innerHTML = singleSetHTML + singleSetHTML + singleSetHTML + singleSetHTML;
     }
 
-    function setScrollSpeed(speed) {
-      const baseDuration = 45; // Base 1.0x duration in seconds
-      const duration = baseDuration / speed;
+    // Default pace set to 90s (previously 0.5x)
+    const BASE_STREAM_DURATION = 90;
 
-      document.getElementById('leftBelt').style.animationDuration = `${duration}s`;
-      document.getElementById('rightBelt').style.animationDuration = `${duration}s`;
+    function setScrollSpeed(speed) {
+      const duration = BASE_STREAM_DURATION / speed;
+      document.getElementById('chatScrollBelt').style.animationDuration = `${duration}s`;
 
       document.querySelectorAll('.speed-btn').forEach(btn => {
         btn.classList.toggle('active', parseFloat(btn.dataset.speed) === speed);
