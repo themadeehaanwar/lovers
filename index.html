@@ -177,24 +177,29 @@
       font-weight: 500;
     }
 
-    /* Your Text: Deep Purple Fantastical Glow */
+    /* Her Text (~M): Translucent White Glass, Solid White Border, Glowing Aura */
     .chat-left {
       align-self: flex-start;
       border-bottom-left-radius: 4px;
-      background: rgba(25, 10, 45, 0.85);
-      border: 1px solid rgba(192, 132, 252, 0.8);
-      color: #f3e8ff;
-      box-shadow: 0 0 25px rgba(168, 85, 247, 0.5), inset 0 0 15px rgba(192, 132, 252, 0.2);
+      background: rgba(255, 255, 255, 0.15);
+      border: 1.5px solid #ffffff;
+      color: #ffffff;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.2);
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
     }
 
-    /* Her Text: Angelic White Glow */
+    /* Your Text (~J): Deep Translucent Purple Glow */
     .chat-right {
       align-self: flex-end;
       border-bottom-right-radius: 4px;
-      background: rgba(255, 255, 255, 0.95);
-      border: 1px solid rgba(255, 255, 255, 1);
-      color: #2a0845;
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 15px rgba(216, 180, 254, 0.6);
+      background: rgba(25, 10, 45, 0.85);
+      border: 1px solid rgba(192, 132, 252, 0.8);
+      color: #f3e8ff;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 0 25px rgba(168, 85, 247, 0.6), inset 0 0 15px rgba(192, 132, 252, 0.2);
     }
 
     .tap-continue {
@@ -543,7 +548,7 @@
     .chat-stream-viewport {
       position: relative;
       width: 100%;
-      max-width: 650px;
+      max-width: 700px;
       flex: 1;
       overflow: hidden;
       padding: 0 20px;
@@ -571,7 +576,7 @@
     }
 
     .stream-bubble {
-      max-width: 85%;
+      max-width: 78%;
       padding: 14px 20px;
       border-radius: 18px;
       font-size: 0.95rem;
@@ -580,24 +585,27 @@
       word-break: break-word;
     }
 
-    /* Your Bubble (~J): Deep Purple Glow */
+    /* Your Bubble (~J): Right Side, Deep Purple Glow */
     .bubble-j {
-      align-self: flex-start;
-      border-bottom-left-radius: 4px;
-      background: rgba(25, 10, 45, 0.9);
-      border: 1px solid rgba(192, 132, 252, 0.8);
-      color: #f3e8ff;
-      box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
-    }
-
-    /* Her Bubble (~M): Angelic White Glow */
-    .bubble-m {
       align-self: flex-end;
       border-bottom-right-radius: 4px;
-      background: rgba(255, 255, 255, 0.95);
-      border: 1px solid rgba(255, 255, 255, 1);
-      color: #2a0845;
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.8), 0 0 12px rgba(216, 180, 254, 0.6);
+      background: rgba(25, 10, 45, 0.88);
+      border: 1px solid rgba(192, 132, 252, 0.8);
+      color: #f3e8ff;
+      box-shadow: 0 0 22px rgba(168, 85, 247, 0.5);
+    }
+
+    /* Her Bubble (~M): Left Side, Frosted Glass White Glow */
+    .bubble-m {
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1.5px solid #ffffff;
+      color: #ffffff;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.2);
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
     }
 
     @media (max-width: 600px) {
@@ -609,7 +617,7 @@
       .controls-bar { top: 20px; }
       .nav-btn { font-size: 0.72rem; padding: 8px 16px; }
       .header-title { font-size: 1.15rem; }
-      .stream-bubble { font-size: 0.88rem; padding: 12px 16px; }
+      .stream-bubble { font-size: 0.88rem; padding: 12px 16px; max-width: 85%; }
       .chat-stream-viewport { padding: 0 12px; }
       .chat-scroll-belt { width: calc(100% - 24px); left: 12px; }
     }
@@ -659,11 +667,11 @@
     <div class="inner-world" id="innerWorld" onclick="transitionToBoard()">
       <div></div>
       <div class="chat-container">
-        <!-- Your Text: Deep Purple Glow -->
+        <!-- Her Text (~M): Left Side, Frosted Glass White Glow -->
         <div class="chat-bubble chat-left">
           "You say I am your god but you are my religion, my one true love and life, my existence is all for you"
         </div>
-        <!-- Her Text: Angelic White Glow -->
+        <!-- Your Text (~J): Right Side, Deep Purple Glow -->
         <div class="chat-bubble chat-right">
           "love like mine doesnt exist. i have loved you intensely, passionately, vehemently and hungrily, always finding another way to love you because worshipping you has never been enough"
         </div>
@@ -943,42 +951,25 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
       updateTransform();
     }
 
+    /* Direct Constellation Lines: Center Node -> Each Cloud */
     function drawConstellations() {
       const svg = document.getElementById('constellationSvg');
       svg.innerHTML = '';
 
       const centerPoint = { x: 1600, y: 1600 };
 
-      const points = clouds.map(c => {
+      clouds.forEach(c => {
         const top = parseFloat(c.style.top) + (c.offsetHeight / 2 || 110);
         const left = parseFloat(c.style.left) + (c.offsetWidth / 2 || 220);
-        return { x: left, y: top };
-      });
 
-      points.forEach(pt => {
         const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
         line.setAttribute('x1', centerPoint.x);
         line.setAttribute('y1', centerPoint.y);
-        line.setAttribute('x2', pt.x);
-        line.setAttribute('y2', pt.y);
+        line.setAttribute('x2', left);
+        line.setAttribute('y2', top);
         line.setAttribute('class', 'orbit-line');
         svg.appendChild(line);
       });
-
-      for (let i = 0; i < points.length; i++) {
-        for (let j = i + 1; j < points.length; j++) {
-          const dist = Math.hypot(points[i].x - points[j].x, points[i].y - points[j].y);
-          if (dist < 600) {
-            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-            line.setAttribute('x1', points[i].x);
-            line.setAttribute('y1', points[i].y);
-            line.setAttribute('x2', points[j].x);
-            line.setAttribute('y2', points[j].y);
-            line.setAttribute('class', 'orbit-line');
-            svg.appendChild(line);
-          }
-        }
-      }
     }
 
     let lastRandomIndex = -1;
@@ -1097,7 +1088,7 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
 
     /* --- PAGE 4: AUTHENTIC DATA & CHAT STREAM --- */
     
-    // Her exact statements about what she loves about you (~J)
+    // Her exact statements about what she loves about you (~M) -> Left side, White Glowing
     const herListForYou = [
       "your eyes",
       "your smile",
@@ -1127,7 +1118,7 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
       "your eyelashes"
     ];
 
-    // Your exact statements about what you love about her (~M)
+    // Your exact statements about what you love about her (~J) -> Right side, Purple
     const yourListForHer = [
       "your eyes, your deep ocean eyes",
       "your beautiful smile",
@@ -1149,17 +1140,15 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
 
       const chatScrollBelt = document.getElementById('chatScrollBelt');
 
-      // Interleave items sequentially (Your turn -> Her turn -> Your turn)
-      const interleaved = [];
+      // Interleave items with individual array modulo so lists loop seamlessly even with imbalanced lengths
       const maxLength = Math.max(yourListForHer.length, herListForYou.length);
+      const interleaved = [];
 
       for (let i = 0; i < maxLength; i++) {
-        if (i < yourListForHer.length) {
-          interleaved.push({ sender: 'J', text: yourListForHer[i] });
-        }
-        if (i < herListForYou.length) {
-          interleaved.push({ sender: 'M', text: herListForYou[i] });
-        }
+        // Her item on the Left (~M)
+        interleaved.push({ sender: 'M', text: herListForYou[i % herListForYou.length] });
+        // Your item on the Right (~J)
+        interleaved.push({ sender: 'J', text: yourListForHer[i % yourListForHer.length] });
       }
 
       // Convert array into chat message bubbles
@@ -1168,11 +1157,11 @@ Tum aadat bano hamaari, hum bigad jaayenge</div>
         return `<div class="stream-bubble ${bubbleClass}">${item.text}</div>`;
       }).join('');
 
-      // Programmatically repeat sequence 4x to form a seamless infinite loop
+      // Repeat sequence 4x for a smooth infinite animation belt
       chatScrollBelt.innerHTML = singleSetHTML + singleSetHTML + singleSetHTML + singleSetHTML;
     }
 
-    // Default pace set to 90s (previously 0.5x)
+    // Default scroll pace duration
     const BASE_STREAM_DURATION = 90;
 
     function setScrollSpeed(speed) {
