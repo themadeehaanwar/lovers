@@ -475,9 +475,7 @@
       position: absolute;
       top: 0; left: 0;
       width: 100vw; height: 100dvh;
-      background-image: linear-gradient(rgba(5, 1, 9, 0.45), rgba(5, 1, 9, 0.45)), url('https://lh3.googleusercontent.com/d/1I9zi4uTnHFtMQpG3I1U8KLnRl7QTKF-Q');
-      background-size: cover;
-      background-position: center;
+      background: radial-gradient(circle at center, #130624 0%, #050109 100%);
       z-index: 150;
       display: flex;
       flex-direction: column;
@@ -485,8 +483,6 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.8s ease;
-      backdrop-filter: blur(2px);
-      -webkit-backdrop-filter: blur(2px);
     }
 
     .scroll-page.visible {
@@ -498,9 +494,8 @@
       width: 100%;
       text-align: center;
       padding: 22px 15px 12px 15px;
-      background: rgba(10, 3, 20, 0.75);
+      background: rgba(10, 3, 20, 0.85);
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(241, 225, 255, 0.25);
       z-index: 20;
     }
@@ -597,8 +592,6 @@
       background: rgba(25, 10, 45, 0.88);
       border: 1px solid rgba(192, 132, 252, 0.8);
       color: #f3e8ff;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
       box-shadow: 0 0 22px rgba(168, 85, 247, 0.5);
     }
 
@@ -622,9 +615,8 @@
       left: 0;
       width: 100%;
       padding: 14px 20px;
-      background: rgba(12, 4, 25, 0.85);
+      background: rgba(12, 4, 25, 0.92);
       backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
       border-top: 1px solid rgba(241, 225, 255, 0.25);
       z-index: 50;
       display: flex;
